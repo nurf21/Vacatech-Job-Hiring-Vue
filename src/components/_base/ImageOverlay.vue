@@ -1,13 +1,9 @@
 <template>
-  <div class="content-left">
-    <div class="content-center">
-      <h2>Temukan developer berbakat &#38; terbaik di berbagai bidang keahlian</h2>
-    </div>
-  </div>
+  <div></div>
 </template>
 
 <style scoped>
-.content-left {
+/* .content-left {
   color: azure;
   height: 100%;
   background-image: linear-gradient(
@@ -16,7 +12,7 @@
     ),
     url('../../assets/img01.png');
   background-size: cover;
-}
+} */
 </style>
 
 <script>
