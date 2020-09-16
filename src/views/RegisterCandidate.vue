@@ -1,5 +1,5 @@
 <template>
-  <b-container fluid class="login-container">
+  <b-container fluid class="register-container">
     <b-row>
       <b-col md="6" sm="6"></b-col>
       <b-col md="6" sm="6">
@@ -10,9 +10,9 @@
 </template>
 
 <style scoped>
-.login-container {
+.register-container {
   background-color: #f6f7f8;
-  height: 100vh;
+  height: 130vh;
   width: 100%;
   display: grid;
   align-items: center;
@@ -20,7 +20,7 @@
 </style>
 
 <script>
-import Form from '../components/_base/FormLogin'
+import Form from '../components/_base/FormRegisterCandidate'
 
 export default {
   name: 'Login',
