@@ -11,17 +11,25 @@
     </b-row>
     <b-row class="login-form">
       <b-col>
-        <b-form>
+        <b-form @submit.prevent="onSubmit">
           <b-row class="component-form">
             <b-col class="text-left">
               <label for="email">Email</label>
-              <b-input type="email" id="email"></b-input>
+              <b-input
+                type="email"
+                id="email"
+                v-model="form.user_email"
+              ></b-input>
             </b-col>
           </b-row>
           <b-row class="component-form">
             <b-col class="text-left">
               <label for="password">Kata Sandi</label>
-              <b-input type="password" id="password"></b-input>
+              <b-input
+                type="password"
+                id="password"
+                v-model="form.user_password"
+              ></b-input>
             </b-col>
           </b-row>
           <b-row class="component-form">
@@ -35,7 +43,8 @@
                 type="submit"
                 block
                 style="background-color: #FBB017; border-color: transparent;"
-              >Login</b-button>
+                >Login</b-button
+              >
             </b-col>
           </b-row>
         </b-form>
@@ -67,7 +76,30 @@ p {
 </style>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
+
 export default {
-  name: 'FormLogin'
+  name: 'FormLogin',
+  data() {
+    return {
+      form: {
+        user_email: '',
+        user_password: ''
+      }
+    }
+  },
+  methods: {
+    ...mapGetters({ error: 'getError' }),
+    ...mapActions(['login']),
+    onSubmit() {
+      this.login(this.form)
+        .then(result => {
+          this.$router.push('/')
+        })
+        .catch(error => {
+          throw error
+        })
+    }
+  }
 }
 </script>
