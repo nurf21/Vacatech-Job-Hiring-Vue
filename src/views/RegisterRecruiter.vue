@@ -1,23 +1,27 @@
 <template>
-  <b-container fluid class="register-container">
+  <div class="register-container">
     <b-row>
-      <b-col md="6" sm="6">
+      <b-col md="6" sm="6" class="content-left">
         <ImageOverlay />
       </b-col>
-      <b-col md="6" sm="6">
+      <b-col md="6" sm="6" class="content-right">
         <Form />
       </b-col>
     </b-row>
-  </b-container>
+  </div>
 </template>
 
 <style scoped>
 .register-container {
   background-color: #f6f7f8;
-  height: 150vh;
-  width: 100%;
-  display: grid;
-  align-items: center;
+  padding: 40px 75px;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.register-container .content-right {
+  overflow: auto;
+  height: 90vh;
 }
 </style>
 
