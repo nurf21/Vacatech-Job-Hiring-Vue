@@ -11,47 +11,47 @@
     </b-row>
     <b-row class="login-form">
       <b-col>
-        <b-form>
+        <b-form @submit.prevent="onSubmit">
           <b-row class="component-form">
             <b-col class="text-left">
               <label for="name">Nama</label>
-              <b-input type="text" id="name"></b-input>
+              <b-input type="text" id="name" v-model="form.user_name"></b-input>
             </b-col>
           </b-row>
           <b-row class="component-form">
             <b-col class="text-left">
               <label for="email">Email</label>
-              <b-input type="email" id="email"></b-input>
+              <b-input type="email" id="email" v-model="form.user_email"></b-input>
             </b-col>
           </b-row>
           <b-row class="component-form">
             <b-col class="text-left">
               <label for="company">Perusahaan</label>
-              <b-input type="text" id="company"></b-input>
+              <b-input type="text" id="company" v-model="form.company_name"></b-input>
             </b-col>
           </b-row>
           <b-row class="component-form">
             <b-col class="text-left">
               <label for="jabatan">Jabatan</label>
-              <b-input type="text" id="jabatan"></b-input>
+              <b-input type="text" id="jabatan" v-model="form.company_depart"></b-input>
             </b-col>
           </b-row>
           <b-row class="component-form">
             <b-col class="text-left">
               <label for="handphone">No handphone</label>
-              <b-input type="text" id="handphone"></b-input>
+              <b-input type="text" id="handphone" v-model="form.user_phone"></b-input>
             </b-col>
           </b-row>
           <b-row class="component-form">
             <b-col class="text-left">
               <label for="password">Kata sandi</label>
-              <b-input type="password" id="password"></b-input>
+              <b-input type="password" id="password" v-model="form.user_password"></b-input>
             </b-col>
           </b-row>
           <b-row class="component-form">
             <b-col class="text-left">
               <label for="confirmpassword">Konfirmasi kata sandi</label>
-              <b-input type="password" id="confirmpassword"></b-input>
+              <b-input type="password" id="confirmpassword" v-model="form.confirm_password"></b-input>
             </b-col>
           </b-row>
           <b-row class="component-form">
@@ -97,7 +97,31 @@ p {
 </style>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
-  name: 'FormLogin'
+  name: 'FormLogin',
+  data() {
+    return {
+      form: {}
+    }
+  },
+  methods: {
+    ...mapActions(['register']),
+    onSubmit() {
+      const payload = {
+        form: this.form,
+        role: 'recruiter'
+      }
+      console.log(this.form)
+      this.register(payload)
+        .then((result) => {
+          this.$router.push('/login')
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    }
+  }
 }
 </script>

@@ -95,10 +95,13 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['registWorker']),
+    ...mapActions(['register']),
     onSubmit() {
-      console.log(this.form.user_phone)
-      this.registWorker(this.form)
+      const payload = {
+        form: this.form,
+        role: 'worker'
+      }
+      this.register(payload)
         .then((result) => {
           this.$router.push('/login')
         })

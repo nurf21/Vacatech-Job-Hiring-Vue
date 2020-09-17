@@ -4,5 +4,19 @@
   </div>
 </template>
 
-<style>
-</style>
+<script>
+import { mapActions } from 'vuex'
+
+export default {
+  name: 'App',
+  methods: {
+    ...mapActions(['interceptorRequest', 'interceptorResponse'])
+  },
+  created() {
+    this.interceptorRequest()
+    this.interceptorResponse()
+  }
+}
+</script>
+
+<style></style>
