@@ -20,6 +20,7 @@ export default {
           .then(response => {
             context.commit('setUser', response.data.data)
             localStorage.setItem('token', response.data.data.token)
+            localStorage.setItem('num', response.data.data.user_id)
             resolve(response.data)
           })
           .catch(error => {
@@ -33,6 +34,59 @@ export default {
           .post(
             `${process.env.VUE_APP_BASE_URL}/users/register/${payload.role}`,
             payload.form
+          )
+          .then(response => {
+            resolve(response.data)
+          })
+          .catch(error => {
+            reject(error.response)
+          })
+      })
+    },
+    sendEmail(context, payload) {
+      return new Promise((resolve, reject) => {
+        axios
+          .post(`${process.env.VUE_APP_BASE_URL}/users/forgot`, payload)
+          .then(response => {
+            resolve(response.data)
+          })
+          .catch(error => {
+            reject(error.response)
+          })
+      })
+    },
+    activateEmail(context, payload) {
+      return new Promise((resolve, reject) => {
+        axios
+          .post(`${process.env.VUE_APP_BASE_URL}/users/register/email`, payload)
+          .then(response => {
+            resolve(response.data)
+          })
+          .catch(error => {
+            reject(error.response)
+          })
+      })
+    },
+    changePassword(context, payload) {
+      return new Promise((resolve, reject) => {
+        axios
+          .patch(
+            `${process.env.VUE_APP_BASE_URL}/users/change?keys=${payload.keys}`,
+            payload.form
+          )
+          .then(response => {
+            resolve(response.data)
+          })
+          .catch(error => {
+            reject(error.response)
+          })
+      })
+    },
+    activateUser(context, payload) {
+      return new Promise((resolve, reject) => {
+        axios
+          .patch(
+            `${process.env.VUE_APP_BASE_URL}/users/activate?keys=${payload}`
           )
           .then(response => {
             resolve(response.data)
@@ -59,7 +113,6 @@ export default {
           return response
         },
         function(error) {
-          context.commit('setError', error.response.data.msg)
           if (error.response.status === 403) {
             if (
               error.response.data.msg === 'invalid token' ||
@@ -84,6 +137,9 @@ export default {
   getters: {
     isLogin(state) {
       return state.token !== null
+    },
+    userRole(state) {
+      return state.user_role
     }
   }
 }

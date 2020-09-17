@@ -30,6 +30,24 @@ const routes = [
     meta: { requiresVisitor: true }
   },
   {
+    path: '/reset',
+    name: 'Reset',
+    component: () => import('../views/Reset.vue'),
+    meta: { requiresVisitor: true }
+  },
+  {
+    path: '/setpassword',
+    name: 'Set',
+    component: () => import('../views/Set.vue'),
+    meta: { requiresVisitor: true }
+  },
+  {
+    path: '/activate',
+    name: 'Activation',
+    component: () => import('../views/Activation.vue'),
+    meta: { requiresVisitor: true }
+  },
+  {
     path: '/profile',
     name: 'Profile',
     component: () => import('../views/Profile.vue')
