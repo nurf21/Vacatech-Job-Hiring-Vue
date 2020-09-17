@@ -27,6 +27,21 @@ export default {
           })
       })
     },
+    registWorker(context, payload) {
+      return new Promise((resolve, reject) => {
+        axios
+          .post(
+            `${process.env.VUE_APP_BASE_URL}/users/register/worker`,
+            payload
+          )
+          .then(response => {
+            resolve(response.data)
+          })
+          .catch(error => {
+            reject(error.response)
+          })
+      })
+    },
     interceptorRequest(context) {
       axios.interceptors.request.use(
         function(config) {
