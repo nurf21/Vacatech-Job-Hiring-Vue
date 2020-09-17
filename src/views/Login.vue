@@ -1,23 +1,25 @@
 <template>
-  <b-container fluid class="login-container">
+  <div class="login-container">
     <b-row>
-      <b-col md="6" sm="6">
+      <b-col md="6" sm="6" class="content-left">
         <ImageOverlay />
       </b-col>
-      <b-col md="6" sm="6">
+      <b-col md="6" sm="6" class="content-right">
         <Form />
       </b-col>
     </b-row>
-  </b-container>
+  </div>
 </template>
 
 <style scoped>
 .login-container {
   background-color: #f6f7f8;
+  padding: 40px 75px;
   height: 100vh;
-  width: 100%;
-  display: grid;
-  align-items: center;
+}
+
+.login-container .content-right {
+  padding: 5em 0em;
 }
 </style>
 

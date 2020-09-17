@@ -1,18 +1,41 @@
 <template>
-  <div></div>
+  <div class="img-container">
+    <div class="image-content">
+      <img src="../../assets/img/img01.png" />
+    </div>
+    <div class="image-overlay">
+      <img src="../../assets/img/overlay.png" />
+    </div>
+    <div class="text">
+      <img src="../../assets/logo/light.png" />
+    </div>
+  </div>
 </template>
 
 <style scoped>
-/* .content-left {
-  color: azure;
-  height: 100%;
-  background-image: linear-gradient(
-      rgba(94, 80, 161, 0.5),
-      rgba(94, 80, 161, 0.5)
-    ),
-    url('../../assets/img01.png');
-  background-size: cover;
-} */
+.image-content {
+  position: absolute;
+}
+
+.image-content img {
+  width: 500px;
+  height: 580px;
+  object-fit: cover;
+}
+
+.image-overlay {
+  position: absolute;
+}
+
+.image-overlay img {
+  width: 500px;
+  height: 580px;
+  object-fit: cover;
+}
+
+.text {
+  position: absolute;
+}
 </style>
 
 <script>
