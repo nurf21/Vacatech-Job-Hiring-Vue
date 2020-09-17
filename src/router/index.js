@@ -22,8 +22,13 @@ const routes = [
   },
   {
     path: '/register/worker',
-    name: 'Register',
+    name: 'RegisterWorker',
     component: () => import('../views/RegisterCandidate.vue')
+  },
+  {
+    path: '/register/recruiter',
+    name: 'RegisterRecruiter',
+    component: () => import('../views/RegisterRecruiter.vue')
   }
 ]
 

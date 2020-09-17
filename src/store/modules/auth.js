@@ -27,12 +27,12 @@ export default {
           })
       })
     },
-    registWorker(context, payload) {
+    register(context, payload) {
       return new Promise((resolve, reject) => {
         axios
           .post(
-            `${process.env.VUE_APP_BASE_URL}/users/register/worker`,
-            payload
+            `${process.env.VUE_APP_BASE_URL}/users/register/${payload.role}`,
+            payload.form
           )
           .then(response => {
             resolve(response.data)
