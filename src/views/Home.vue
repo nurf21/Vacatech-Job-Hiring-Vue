@@ -21,26 +21,18 @@
 
         <b-row>
           <b-col>
-            <b-button class="b-button-mc" size="lg"
-              >Mulai Dari Sekarang</b-button
-            >
+            <b-button class="b-button-mc" size="lg">Mulai Dari Sekarang</b-button>
           </b-col>
         </b-row>
       </b-col>
       <b-col md="6" class="text-center">
-        <b-img
-          v-bind="styleImg1"
-          :src="require('../assets/img/img01.jpg')"
-        ></b-img>
+        <b-img v-bind="styleImg1" :src="require('../assets/img/img01.jpg')"></b-img>
       </b-col>
     </b-row>
 
     <b-row class="main-content-2">
       <b-col md="6">
-        <b-img
-          v-bind="styleImg2"
-          :src="require('../assets/img/img02.jpg')"
-        ></b-img>
+        <b-img v-bind="styleImg2" :src="require('../assets/img/img02.jpg')"></b-img>
       </b-col>
       <b-col md="6">
         <b-row>
@@ -108,9 +100,7 @@
             <b-col>
               <b-row>
                 <b-col md="1">
-                  <b-img
-                    :src="require('../assets/icon/tick-warning.png')"
-                  ></b-img>
+                  <b-img :src="require('../assets/icon/tick-warning.png')"></b-img>
                 </b-col>
                 <b-col>
                   <p>Java</p>
@@ -120,9 +110,7 @@
             <b-col>
               <b-row>
                 <b-col md="1">
-                  <b-img
-                    :src="require('../assets/icon/tick-warning.png')"
-                  ></b-img>
+                  <b-img :src="require('../assets/icon/tick-warning.png')"></b-img>
                 </b-col>
                 <b-col>
                   <p>Golang</p>
@@ -135,9 +123,7 @@
             <b-col>
               <b-row>
                 <b-col md="1">
-                  <b-img
-                    :src="require('../assets/icon/tick-warning.png')"
-                  ></b-img>
+                  <b-img :src="require('../assets/icon/tick-warning.png')"></b-img>
                 </b-col>
                 <b-col>
                   <p>Kotlin</p>
@@ -147,9 +133,7 @@
             <b-col>
               <b-row>
                 <b-col md="1">
-                  <b-img
-                    :src="require('../assets/icon/tick-warning.png')"
-                  ></b-img>
+                  <b-img :src="require('../assets/icon/tick-warning.png')"></b-img>
                 </b-col>
                 <b-col>
                   <p>C++</p>
@@ -162,9 +146,7 @@
             <b-col>
               <b-row>
                 <b-col md="1">
-                  <b-img
-                    :src="require('../assets/icon/tick-warning.png')"
-                  ></b-img>
+                  <b-img :src="require('../assets/icon/tick-warning.png')"></b-img>
                 </b-col>
                 <b-col>
                   <p>PHP</p>
@@ -174,9 +156,7 @@
             <b-col>
               <b-row>
                 <b-col md="1">
-                  <b-img
-                    :src="require('../assets/icon/tick-warning.png')"
-                  ></b-img>
+                  <b-img :src="require('../assets/icon/tick-warning.png')"></b-img>
                 </b-col>
                 <b-col>
                   <p>Ruby</p>
@@ -189,9 +169,7 @@
             <b-col>
               <b-row>
                 <b-col md="1">
-                  <b-img
-                    :src="require('../assets/icon/tick-warning.png')"
-                  ></b-img>
+                  <b-img :src="require('../assets/icon/tick-warning.png')"></b-img>
                 </b-col>
                 <b-col>
                   <p>JavaScript</p>
@@ -201,9 +179,7 @@
             <b-col>
               <b-row>
                 <b-col md="1">
-                  <b-img
-                    :src="require('../assets/icon/tick-warning.png')"
-                  ></b-img>
+                  <b-img :src="require('../assets/icon/tick-warning.png')"></b-img>
                 </b-col>
                 <b-col>
                   <p>10+ Bahasa Lainnya</p>
@@ -214,10 +190,7 @@
         </div>
       </b-col>
       <b-col md="6" class="text-center">
-        <b-img
-          v-bind="styleImg3"
-          :src="require('../assets/img/img03.jpg')"
-        ></b-img>
+        <b-img v-bind="styleImg3" :src="require('../assets/img/img03.jpg')"></b-img>
       </b-col>
     </b-row>
 
@@ -261,19 +234,13 @@
         </b-row>
         <b-row class="contact">
           <b-col md="4">
-            <p>
-              2020 Peworld. All right reserved
-            </p>
+            <p>2020 Pewworld. All right reserved</p>
           </b-col>
           <b-col md="2" offset-md="4" class="text-right">
-            <p>
-              Telepon
-            </p>
+            <p>Telepon</p>
           </b-col>
           <b-col md="2" class="text-right">
-            <p>
-              Email
-            </p>
+            <p>Email</p>
           </b-col>
         </b-row>
       </b-col>

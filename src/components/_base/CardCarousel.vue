@@ -13,15 +13,9 @@
           alt="user_image"
           style="max-width: 140px; max-height: 140px; border: 10px solid rgba(251, 176, 23, 0.37);"
         ></b-img>
-        <h4 class="card-title">
-          {{ item.user_name }}
-        </h4>
-        <p class="card-role">
-          {{ item.user_role }}
-        </p>
-        <p class="card-comment">
-          {{ item.user_comment }}
-        </p>
+        <h4 class="card-title">{{ item.user_name }}</h4>
+        <p class="card-role">{{ item.user_role }}</p>
+        <p class="card-comment">{{ item.user_comment }}</p>
       </b-card>
     </b-card-group>
 
@@ -91,7 +85,7 @@
 export default {
   data() {
     return {
-      paginatedClubs: [],
+      paginated: [],
       nbPages: 0,
       perPage: 3,
       currentPageIndex: 0,
@@ -173,7 +167,7 @@ export default {
     currentPageClubs() {
       this.createPages()
 
-      return this.paginatedClubs[this.currentPageIndex]
+      return this.paginated[this.currentPageIndex]
     }
   },
   methods: {
@@ -184,10 +178,7 @@ export default {
       const lengthAll = Object.keys(this.users).length
       this.nbPages = 0
       for (let i = 0; i < lengthAll; i = i + this.perPage) {
-        this.paginatedClubs[this.nbPages] = this.users.slice(
-          i,
-          i + this.perPage
-        )
+        this.paginated[this.nbPages] = this.users.slice(i, i + this.perPage)
         this.nbPages++
       }
     },

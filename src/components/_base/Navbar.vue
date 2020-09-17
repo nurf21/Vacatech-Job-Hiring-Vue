@@ -1,7 +1,7 @@
 <template>
   <b-navbar>
     <b-navbar-brand href="#">
-      <b-img v-bind="styleImg" :src="require('../../assets/logo/primary.png')"></b-img>
+      <b-img v-bind="styleImg" :src="require('../../assets/logo/dark.png')"></b-img>
     </b-navbar-brand>
     <b-navbar-nav class="ml-auto">
       <b-button size="sm" class="mr-sm-2 b-button-login">Masuk</b-button>
