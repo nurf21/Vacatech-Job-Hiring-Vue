@@ -1,11 +1,30 @@
 <template>
   <b-navbar>
-    <b-navbar-brand href="#">
-      <b-img v-bind="styleImg" :src="require('../../assets/logo/dark.png')"></b-img>
+    <b-navbar-brand>
+      <b-img
+        v-bind="styleImg"
+        :src="require('../../assets/logo/dark.png')"
+      ></b-img>
     </b-navbar-brand>
     <b-navbar-nav class="ml-auto">
-      <b-button size="sm" class="mr-sm-2 b-button-login">Masuk</b-button>
-      <b-button size="sm" class="my-2 my-sm-0 b-button-register">Daftar</b-button>
+      <router-link to="/login">
+        <b-button size="sm" class="mr-sm-2 b-button-login">Masuk</b-button>
+      </router-link>
+      <b-button
+        size="sm"
+        class="my-2 my-sm-0 b-button-register"
+        id="popover-target-1"
+        >Daftar</b-button
+      >
+      <b-popover target="popover-target-1" triggers="hover" placement="top">
+        <router-link to="/register/worker">
+          Daftar sebagai pekerja >
+        </router-link>
+        <br />
+        <router-link to="/register/recruiter">
+          Daftar sebagai perekrut >
+        </router-link>
+      </b-popover>
     </b-navbar-nav>
   </b-navbar>
 </template>
