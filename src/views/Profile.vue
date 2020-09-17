@@ -117,7 +117,9 @@
       </div>
     </div>
 
-    <footer></footer>
+    <div class="footer">
+      <Footer />
+    </div>
   </div>
 </template>
 
@@ -215,15 +217,21 @@
   line-height: 56px;
   color: #1f2a36;
 }
+
+.footer {
+  overflow-x: hidden;
+}
 </style>
 
 <script>
 import Navbar from '../components/_base/NavigationBar'
+import Footer from '../components/_base/Footer'
 
 export default {
   name: 'Profile',
   components: {
-    Navbar
+    Navbar,
+    Footer
   },
   data() {
     return {}
