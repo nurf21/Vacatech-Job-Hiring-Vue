@@ -28,6 +28,11 @@ const routes = [
     name: 'RegisterRecruiter',
     component: () => import('../views/RegisterRecruiter.vue'),
     meta: { requiresVisitor: true }
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: () => import('../views/Profile.vue')
   }
 ]
 
