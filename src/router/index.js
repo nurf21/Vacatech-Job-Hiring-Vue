@@ -46,6 +46,11 @@ const routes = [
     name: 'Activation',
     component: () => import('../views/Activation.vue'),
     meta: { requiresVisitor: true }
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: () => import('../views/Profile.vue')
   }
 ]
 
