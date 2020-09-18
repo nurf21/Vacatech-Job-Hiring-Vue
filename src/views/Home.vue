@@ -6,7 +6,7 @@
       <b-container>
         <div class="form pt-3">
           <div class="search-name">
-            <b-form-input id="input-1" v-model="search" required placeholder="Search for any skill"></b-form-input>
+            <b-form-input id="input-1" v-model="search" placeholder="Search for talent's location"></b-form-input>
           </div>
           <div class="img-search">
             <img src="../assets/icon/search.png" alt />
@@ -14,11 +14,11 @@
           <div class="line"></div>
           <div class="form-sort">
             <b-form-group id="input-group-3">
-              <b-form-select id="input-3" v-model="sort" :options="sortBy" required></b-form-select>
+              <b-form-select id="input-3" v-model="sort" :options="sortBy"  @change="onChange($event)" ></b-form-select>
             </b-form-group>
           </div>
           <div>
-            <b-button class="btn-search">Search</b-button>
+            <b-button class="btn-search" @click="onSearch()">Search</b-button>
           </div>
         </div>
         <div class="worker mt-5">
@@ -27,7 +27,8 @@
               <b-img :src="url + '/' + value.profile[0].profile_img" fluid class="profile-img" />
               <div class="profile-details">
                 <h4>{{ value.user_name }}</h4>
-                <p style="color: #9EA0A5;">{{ value.profile[0].profile_job }}</p>
+                <p style="color: #9EA0A5; margin-bottom: 0px">{{ value.profile[0].profile_job }}</p>
+                <p style="color: #9EA0A5;">{{ value.profile[0].job_type }}</p>
                 <p style="color: #9EA0A5; margin-top: -10px">{{ value.profile[0].job_address }}</p>
                 <div class="skills">
                   <div class="skill" v-for="(item, index) in value.skill" :key="index">{{ item.skill_name }}</div>
@@ -74,10 +75,10 @@ export default {
       sort: null,
       sortBy: [
         { text: 'Sort', value: null },
-        'Sortir berdasarkan nama',
-        'Sortir berdasarkan lokasi',
-        'Sortir berdasarkan freelance',
-        'Sortir berdasarkan fulltime'
+        { text: 'Sortir berdasarkan nama', value: 'ORDER BY user_name' },
+        { text: 'Sortir berdasarkan lokasi', value: 'ORDER BY job_address' },
+        { text: 'Sortir berdasarkan freelance', value: 'AND job_type = "Freelance"' },
+        { text: 'Sortir berdasarkan fulltime', value: 'AND job_type = "Full Time"' }
       ],
       url: process.env.VUE_APP_BASE_URL,
       currentPage: 1
@@ -85,9 +86,25 @@ export default {
   },
   methods: {
     ...mapActions(['getProfileDataCompany', 'getAllWorkerData']),
-    ...mapMutations(['pageChange']),
+    ...mapMutations(['pageChange', 'setSort']),
     onPage(value) {
       this.pageChange(value)
+      this.getAllWorkerData()
+    },
+    onChange(event) {
+      if (event === null) {
+        this.setSort('ORDER BY user.user_id')
+      } else {
+        this.setSort(event)
+      }
+      this.getAllWorkerData()
+    },
+    onSearch() {
+      if (this.search === '') {
+        this.setSort('ORDER BY user.user_id')
+      } else {
+        this.setSort(`AND profile.job_address = "${this.search}"`)
+      }
       this.getAllWorkerData()
     }
   },

@@ -6,7 +6,7 @@ export default {
     workerList: {},
     page: 1,
     limit: 4,
-    sort: 'user_id',
+    sort: 'ORDER BY user.user_id',
     totalRows: null
   },
   mutations: {
@@ -19,6 +19,9 @@ export default {
     },
     pageChange(state, payload) {
       state.page = payload
+    },
+    setSort(state, payload) {
+      state.sort = payload
     }
   },
   actions: {
