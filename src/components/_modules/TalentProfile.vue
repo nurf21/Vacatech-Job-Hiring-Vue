@@ -31,6 +31,9 @@
 
 .card-container {
   width: 83vw;
+  background: linear-gradient(to bottom, #5e50a1 50%, #ffffff 50%) no-repeat;
+  background-size: 100% 35%;
+  background-color: white;
   background: white;
   border-radius: 8px;
   padding: 3.15em 4.35em;

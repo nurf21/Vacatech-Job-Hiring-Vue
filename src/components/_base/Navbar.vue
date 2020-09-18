@@ -1,7 +1,7 @@
 <template>
   <b-navbar class="nav-container">
     <b-navbar-brand>
-      <b-img v-bind="styleImg" :src="require('../../assets/logo/dark.png')"></b-img>
+      <b-img v-bind="styleImg" :src="require('../../assets/logo/primary.png')"></b-img>
     </b-navbar-brand>
     <b-navbar-nav class="ml-auto">
       <router-link to="/login">
@@ -29,7 +29,7 @@
 }
 
 .b-button-login:hover {
-  background-color: #5e50a1;
+  background-color: #fbb017;
   border: transparent;
   color: white;
 }
@@ -41,9 +41,9 @@
 }
 
 .b-button-register:hover {
-  background-color: white;
-  border: 1px solid #5e50a1;
-  color: #5e50a1;
+  background-color: #fbb017;
+  border: transparent;
+  color: white;
 }
 </style>
 
