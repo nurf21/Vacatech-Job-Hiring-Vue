@@ -36,7 +36,7 @@ export default {
       localStorage.removeItem('token')
       sessionStorage.clear()
       context.commit('delUser')
-      router.push('/login')
+      router.push('/')
     },
     register(context, payload) {
       return new Promise((resolve, reject) => {
