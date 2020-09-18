@@ -9,9 +9,9 @@
         <b-img
           fluid
           rounded="circle"
-          src="https://picsum.photos/250/250/?image=58"
+          :src="url + '/' + item.user_img"
           alt="user_image"
-          style="max-width: 140px; max-height: 140px; border: 10px solid rgba(251, 176, 23, 0.37);"
+          style="width: 140px; height: 140px; border: 10px solid rgba(251, 176, 23, 0.37);"
         ></b-img>
         <h4 class="card-title">{{ item.user_name }}</h4>
         <p class="card-role">{{ item.user_role }}</p>
@@ -89,69 +89,79 @@ export default {
       nbPages: 0,
       perPage: 3,
       currentPageIndex: 0,
+      url: process.env.VUE_APP_BASE_URL,
       users: [
         {
           user_id: 1,
           user_name: 'Harry Styles',
           user_role: 'Web Developer',
           user_comment:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+          user_img: 'cat1.jpg'
         },
         {
           user_id: 2,
           user_name: 'Louis Tomlinson',
           user_role: 'Web Developer',
           user_comment:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.'
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.',
+          user_img: 'cat2.jpg'
         },
         {
           user_id: 3,
           user_name: 'Liam Payne',
           user_role: 'Mobile Developer',
           user_comment:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.'
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.',
+          user_img: 'cat3.jpg'
         },
         {
           user_id: 4,
           user_name: 'Zayn Malik',
           user_role: 'Fullstack Developer',
           user_comment:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.'
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.',
+          user_img: 'cat4.jpg'
         },
         {
           user_id: 5,
           user_name: 'Niall Horan',
           user_role: 'QA Engineer',
           user_comment:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.'
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.',
+          user_img: 'cat5.jpg'
         },
         {
           user_id: 6,
           user_name: 'Niall and The Potato',
           user_role: 'UX Researcher',
           user_comment:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.'
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.',
+          user_img: 'cat6.jpg'
         },
         {
           user_id: 7,
           user_name: 'Kevin The Pigeon',
           user_role: 'Project Manager',
           user_comment:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.'
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.',
+          user_img: 'cat7.jpg'
         },
         {
           user_id: 8,
           user_name: 'Larry Stylinson',
           user_role: 'UI/UX Designer',
           user_comment:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.'
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.',
+          user_img: 'cat8.jpg'
         },
         {
           user_id: 9,
           user_name: 'One Addition',
           user_role: 'Data Engineer',
           user_comment:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.'
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.',
+          user_img: 'cat9.jpg'
         }
       ]
     }
