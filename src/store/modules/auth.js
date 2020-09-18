@@ -10,6 +10,10 @@ export default {
     setUser(state, payload) {
       state.user = payload
       state.token = payload.token
+    },
+    delUser(state) {
+      state.user = {}
+      state.token = null
     }
   },
   actions: {
@@ -27,6 +31,12 @@ export default {
             reject(error.response)
           })
       })
+    },
+    logout(context) {
+      localStorage.removeItem('token')
+      sessionStorage.clear()
+      context.commit('delUser')
+      router.push('/login')
     },
     register(context, payload) {
       return new Promise((resolve, reject) => {
@@ -138,8 +148,8 @@ export default {
     isLogin(state) {
       return state.token !== null
     },
-    userRole(state) {
-      return state.user_role
+    getUser(state) {
+      return state.user
     }
   }
 }
