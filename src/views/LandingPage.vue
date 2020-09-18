@@ -1,5 +1,5 @@
 <template>
-  <b-container fluid>
+  <div class="lp-container">
     <Navbar />
 
     <b-row align-v="center">
@@ -22,27 +22,19 @@
         <b-row>
           <b-col>
             <router-link to="/register/recruiter">
-              <b-button class="b-button-mc" size="lg"
-                >Mulai Dari Sekarang</b-button
-              >
+              <b-button class="b-button-mc" size="lg">Mulai Dari Sekarang</b-button>
             </router-link>
           </b-col>
         </b-row>
       </b-col>
       <b-col md="6" class="text-center">
-        <b-img
-          v-bind="styleImg1"
-          :src="require('../assets/img/img01.jpg')"
-        ></b-img>
+        <b-img v-bind="styleImg1" :src="require('../assets/img/img01.jpg')"></b-img>
       </b-col>
     </b-row>
 
     <b-row class="main-content-2">
       <b-col md="6">
-        <b-img
-          v-bind="styleImg2"
-          :src="require('../assets/img/img02.jpg')"
-        ></b-img>
+        <b-img v-bind="styleImg2" :src="require('../assets/img/img02.jpg')"></b-img>
       </b-col>
       <b-col md="6">
         <b-row>
@@ -110,9 +102,7 @@
             <b-col>
               <b-row>
                 <b-col md="1">
-                  <b-img
-                    :src="require('../assets/icon/tick-warning.png')"
-                  ></b-img>
+                  <b-img :src="require('../assets/icon/tick-warning.png')"></b-img>
                 </b-col>
                 <b-col>
                   <p>Java</p>
@@ -122,9 +112,7 @@
             <b-col>
               <b-row>
                 <b-col md="1">
-                  <b-img
-                    :src="require('../assets/icon/tick-warning.png')"
-                  ></b-img>
+                  <b-img :src="require('../assets/icon/tick-warning.png')"></b-img>
                 </b-col>
                 <b-col>
                   <p>Golang</p>
@@ -137,9 +125,7 @@
             <b-col>
               <b-row>
                 <b-col md="1">
-                  <b-img
-                    :src="require('../assets/icon/tick-warning.png')"
-                  ></b-img>
+                  <b-img :src="require('../assets/icon/tick-warning.png')"></b-img>
                 </b-col>
                 <b-col>
                   <p>Kotlin</p>
@@ -149,9 +135,7 @@
             <b-col>
               <b-row>
                 <b-col md="1">
-                  <b-img
-                    :src="require('../assets/icon/tick-warning.png')"
-                  ></b-img>
+                  <b-img :src="require('../assets/icon/tick-warning.png')"></b-img>
                 </b-col>
                 <b-col>
                   <p>C++</p>
@@ -164,9 +148,7 @@
             <b-col>
               <b-row>
                 <b-col md="1">
-                  <b-img
-                    :src="require('../assets/icon/tick-warning.png')"
-                  ></b-img>
+                  <b-img :src="require('../assets/icon/tick-warning.png')"></b-img>
                 </b-col>
                 <b-col>
                   <p>PHP</p>
@@ -176,9 +158,7 @@
             <b-col>
               <b-row>
                 <b-col md="1">
-                  <b-img
-                    :src="require('../assets/icon/tick-warning.png')"
-                  ></b-img>
+                  <b-img :src="require('../assets/icon/tick-warning.png')"></b-img>
                 </b-col>
                 <b-col>
                   <p>Ruby</p>
@@ -191,9 +171,7 @@
             <b-col>
               <b-row>
                 <b-col md="1">
-                  <b-img
-                    :src="require('../assets/icon/tick-warning.png')"
-                  ></b-img>
+                  <b-img :src="require('../assets/icon/tick-warning.png')"></b-img>
                 </b-col>
                 <b-col>
                   <p>JavaScript</p>
@@ -203,9 +181,7 @@
             <b-col>
               <b-row>
                 <b-col md="1">
-                  <b-img
-                    :src="require('../assets/icon/tick-warning.png')"
-                  ></b-img>
+                  <b-img :src="require('../assets/icon/tick-warning.png')"></b-img>
                 </b-col>
                 <b-col>
                   <p>10+ Bahasa Lainnya</p>
@@ -216,10 +192,7 @@
         </div>
       </b-col>
       <b-col md="6" class="text-center">
-        <b-img
-          v-bind="styleImg3"
-          :src="require('../assets/img/img03.jpg')"
-        ></b-img>
+        <b-img v-bind="styleImg3" :src="require('../assets/img/img03.jpg')"></b-img>
       </b-col>
     </b-row>
 
@@ -243,45 +216,19 @@
       </b-col>
     </b-row>
 
-    <b-row class="footer">
-      <b-col class="text-left">
-        <b-row class="brand">
-          <b-col md="4">
-            <b-img :src="require('../assets/logo/light.png')"></b-img>
-          </b-col>
-        </b-row>
-        <b-row class="description">
-          <b-col md="4">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-              euismod ipsum et dui rhoncus auctor.
-            </p>
-          </b-col>
-        </b-row>
-        <b-row class="line">
-          <b-col md="12">
-            <hr />
-          </b-col>
-        </b-row>
-        <b-row class="contact">
-          <b-col md="4">
-            <p>2020 Pewworld. All right reserved</p>
-          </b-col>
-          <b-col md="2" offset-md="4" class="text-right">
-            <p>Telepon</p>
-          </b-col>
-          <b-col md="2" class="text-right">
-            <p>Email</p>
-          </b-col>
-        </b-row>
-      </b-col>
-    </b-row>
-  </b-container>
+    <div class="footer">
+      <Footer />
+    </div>
+  </div>
 </template>
 
 <style scoped>
+.lp-container {
+  overflow-x: hidden;
+}
+
 .main-content-1 {
-  padding: 8em 3em;
+  padding: 8em;
 }
 
 .main-content-1 h1 {
@@ -308,7 +255,7 @@
 }
 
 .main-content-2 {
-  padding: 5em 3em;
+  padding: 5em 8em;
 }
 
 .main-content-2 h1 {
@@ -319,7 +266,7 @@
 }
 
 .main-content-3 {
-  padding: 5em 3em;
+  padding: 5em 8em;
 }
 
 .main-content-3 h1 {
@@ -365,39 +312,19 @@
   background-color: white;
   color: #796eaf;
 }
-
-.footer {
-  margin: 7.5em 0em 0em 0em;
-  padding: 4.375em 9em 2.6265em 9em;
-  background-color: #5e50a1;
-}
-
-.footer .description {
-  padding: 1.875em 0em 4em 0em;
-}
-
-.footer p {
-  font-style: normal;
-  font-weight: normal;
-  font-size: 1.125rem;
-  line-height: 1.75rem;
-  color: #ffffff;
-}
-
-.footer hr {
-  border: 1px solid white;
-}
 </style>
 
 <script>
 import Navbar from '../components/_base/Navbar'
 import CardCarousel from '../components/_base/CardCarousel'
+import Footer from '../components/_base/Footer'
 
 export default {
   name: 'Home',
   components: {
     Navbar,
-    CardCarousel
+    CardCarousel,
+    Footer
   },
   data() {
     return {
