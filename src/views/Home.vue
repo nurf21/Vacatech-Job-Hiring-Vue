@@ -22,74 +22,15 @@
           </div>
         </div>
         <div class="worker mt-5">
-          <div class="workers">
+          <div class="workers" v-for="(value, index) in workers" :key="index">
             <div class="profile">
-              <div class="profile-img"></div>
+              <b-img :src="url + '/' + value.profile[0].profile_img" fluid class="profile-img" />
               <div class="profile-details">
-                <h4>Louis Tomlinson</h4>
-                <p style="color: #9EA0A5;">Web Developer</p>
-                <p style="color: #9EA0A5; margin-top: -10px">Lorem Ipsum</p>
+                <h4>{{ value.user_name }}</h4>
+                <p style="color: #9EA0A5;">{{ value.profile[0].profile_job }}</p>
+                <p style="color: #9EA0A5; margin-top: -10px">{{ value.profile[0].job_address }}</p>
                 <div class="skills">
-                  <div class="skill">PHP</div>
-                  <div class="skill">Javascript</div>
-                  <div class="skill">HTML</div>
-                </div>
-              </div>
-            </div>
-            <div style="position: relative">
-              <b-button class="btn-profile">See Profile</b-button>
-            </div>
-          </div>
-          <hr style="color:#9ea0a5" />
-          <div class="workers">
-            <div class="profile">
-              <div class="profile-img"></div>
-              <div class="profile-details">
-                <h4>Harry Styles</h4>
-                <p style="color: #9EA0A5;">Web Developer</p>
-                <p style="color: #9EA0A5; margin-top: -10px">Lorem Ipsum</p>
-                <div class="skills">
-                  <div class="skill">PHP</div>
-                  <div class="skill">Javascript</div>
-                  <div class="skill">HTML</div>
-                </div>
-              </div>
-            </div>
-            <div style="position: relative">
-              <b-button class="btn-profile">See Profile</b-button>
-            </div>
-          </div>
-          <hr style="color:#9ea0a5" />
-          <div class="workers">
-            <div class="profile">
-              <div class="profile-img"></div>
-              <div class="profile-details">
-                <h4>Niall Horam</h4>
-                <p style="color: #9EA0A5;">Web Developer</p>
-                <p style="color: #9EA0A5; margin-top: -10px">Lorem Ipsum</p>
-                <div class="skills">
-                  <div class="skill">PHP</div>
-                  <div class="skill">Javascript</div>
-                  <div class="skill">HTML</div>
-                </div>
-              </div>
-            </div>
-            <div style="position: relative">
-              <b-button class="btn-profile">See Profile</b-button>
-            </div>
-          </div>
-          <hr style="color:#9ea0a5" />
-          <div class="workers">
-            <div class="profile">
-              <div class="profile-img"></div>
-              <div class="profile-details">
-                <h4>Liam Payne</h4>
-                <p style="color: #9EA0A5;">Web Developer</p>
-                <p style="color: #9EA0A5; margin-top: -10px">Lorem Ipsum</p>
-                <div class="skills">
-                  <div class="skill">PHP</div>
-                  <div class="skill">Javascript</div>
-                  <div class="skill">HTML</div>
+                  <div class="skill" v-for="(item, index) in value.skill" :key="index">{{ item.skill_name }}</div>
                 </div>
               </div>
             </div>
@@ -103,7 +44,9 @@
             class="pagination-btn"
             align="center"
             v-model="currentPage"
+            :per-page="perPage"
             :total-rows="rows"
+            @change="onPage"
           ></b-pagination>
         </div>
       </b-container>
@@ -116,7 +59,7 @@
 import Header from '../components/_base/NavigationBar'
 import TopJobs from '../components/_base/HeaderTopJobs.vue'
 import Footer from '../components/_base/Footer'
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters, mapActions, mapMutations } from 'vuex'
 
 export default {
   name: 'Home',
@@ -136,20 +79,25 @@ export default {
         'Sortir berdasarkan freelance',
         'Sortir berdasarkan fulltime'
       ],
-      show: true,
-      rows: 100,
+      url: process.env.VUE_APP_BASE_URL,
       currentPage: 1
     }
   },
   methods: {
-    ...mapActions(['getProfileDataCompany'])
+    ...mapActions(['getProfileDataCompany', 'getAllWorkerData']),
+    ...mapMutations(['pageChange']),
+    onPage(value) {
+      this.pageChange(value)
+      this.getAllWorkerData()
+    }
   },
   computed: {
-    ...mapGetters({ user: 'getUser', profile: 'getProfileCompany' })
+    ...mapGetters({ user: 'getUser', profile: 'getProfileCompany', workers: 'getAllWorker', perPage: 'getLimit', rows: 'getTotalRows' })
   },
   created() {
+    this.pageChange(1)
     this.getProfileDataCompany(this.user.user_id)
-    console.log(this.profile[0])
+    this.getAllWorkerData()
   }
 }
 </script>
