@@ -54,15 +54,28 @@ const routes = [
     meta: { requiresAuth: true }
   },
   {
-    path: '/profile',
-    name: 'Profile',
-    component: () => import('../views/Profile.vue'),
+    path: '/profile/talent',
+    name: 'TalentProfile',
+    component: () => import('../views/TalentProfile.vue'),
     meta: { requiresAuth: true }
   },
   {
-    path: '/update',
-    name: 'UpdateProfile',
-    component: () => import('../views/UpdateProfile.vue')
+    path: '/profile/company',
+    name: 'CompanyProfile',
+    component: () => import('../views/CompanyProfile.vue'),
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/update/talent',
+    name: 'UpdateTalentProfile',
+    component: () => import('../views/UpdateTalentProfile.vue'),
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/update/company',
+    name: 'UpdateCompanyProfile',
+    component: () => import('../views/UpdateCompanyProfile.vue'),
+    meta: { requiresAuth: true }
   }
 ]
 

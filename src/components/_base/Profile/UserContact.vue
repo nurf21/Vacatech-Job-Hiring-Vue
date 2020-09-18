@@ -50,6 +50,15 @@
   line-height: 56px;
   color: #1f2a36;
 }
+
+.contact p {
+  margin: 0.8em 0em;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+  color: #9ea0a5;
+}
 </style>
 
 <script>

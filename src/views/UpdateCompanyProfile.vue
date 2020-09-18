@@ -3,10 +3,10 @@
 </template>
 
 <script>
-import Update from '../components/_modules/UpdateProfile'
+import Update from '../components/_modules/UpdateCompanyProfile'
 
 export default {
-  name: 'Profile',
+  name: 'UpdateCompanyProfile',
   components: {
     Update
   }
