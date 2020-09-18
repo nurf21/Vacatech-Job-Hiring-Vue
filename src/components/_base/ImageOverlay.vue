@@ -7,12 +7,22 @@
       <img src="../../assets/img/overlay.png" />
     </div>
     <div class="text">
-      <img src="../../assets/logo/light.png" />
+      <div class="text-image">
+        <img src="../../assets/logo/light.png" />
+      </div>
+      <div class="text-text">
+        <h1>Temukan developer berbakat dan terbaik di berbagai bidang keahlian</h1>
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped>
+.img-container {
+  width: 500px;
+  height: 580px;
+}
+
 .image-content {
   position: absolute;
 }
@@ -34,7 +44,24 @@
 }
 
 .text {
-  position: absolute;
+  position: relative;
+  padding: 2.75em;
+}
+
+.text .text-image img {
+  max-height: 24px;
+}
+
+.text .text-text {
+  padding: 5em 0em;
+}
+
+.text .text-text h1 {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 44px;
+  line-height: 70px;
+  color: #ffffff;
 }
 </style>
 
