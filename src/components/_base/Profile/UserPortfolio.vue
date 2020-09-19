@@ -5,38 +5,28 @@
         <b-tab title="Portofolio" active>
           <div class="p-container">
             <b-row>
-              <b-col
-                ><b-img
-                  :src="require('../../../assets/profile/porto.jpg')"
-                ></b-img>
-                <p>Project Name</p>
+              <b-col v-for="(value, index) in talentData[0].portfolio" :key="index">
+                <b-img :src="url + '/' + value.portfolio_img"></b-img>
+                <a :href="value.portfolio_link">
+                  <p>{{ value.portfolio_name }}</p>
+                </a>
               </b-col>
             </b-row>
           </div>
         </b-tab>
         <b-tab title="Pengalaman Kerja">
           <b-row>
-            <b-col md="4">
-              <b-img
-                :src="require('../../../assets/profile/porto.jpg')"
-              ></b-img>
-            </b-col>
             <b-col md="8">
-              <b-row>
-                <b-col md="12" class="job"><p>Engineer</p></b-col>
-                <b-col md="12" class="company"><p>Tokopedia</p></b-col>
+              <b-row v-for="(value, index) in talentData[0].experience" :key="index">
+                <b-col md="12" class="job"><p>{{value.exp_position}}</p></b-col>
+                <b-col md="12" class="company"><p>{{value.exp_company}}</p></b-col>
                 <b-col md="4" class="date"
-                  ><p>July 2019 - January 2020</p></b-col
+                  ><p>{{value.exp_date}}</p></b-col
                 >
-                <b-col md="4" class="lamanya"><p>6 months</p></b-col>
                 <b-col md="4"></b-col>
-                <b-col md="12" class="tasks"
-                  ><p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Vestibulum erat orci, mollis nec gravida sed, ornare quis
-                    urna. Curabitur eu lacus fringilla, vestibulum risus at.
-                  </p></b-col
-                >
+                <b-col md="12" class="tasks">
+                  <p>{{value.exp_desc}}</p>
+                </b-col>
                 <b-col md="12"><hr /></b-col>
               </b-row>
             </b-col>
@@ -102,7 +92,17 @@
 </style>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
-  name: 'UserPortfolio'
+  name: 'UserPortfolio',
+  data() {
+    return {
+      url: process.env.VUE_APP_BASE_URL
+    }
+  },
+  computed: {
+    ...mapGetters({ talentData: 'getTalentData' })
+  }
 }
 </script>

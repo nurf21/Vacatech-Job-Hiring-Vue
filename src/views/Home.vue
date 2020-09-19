@@ -36,7 +36,7 @@
               </div>
             </div>
             <div style="position: relative">
-              <b-button class="btn-profile">See Profile</b-button>
+            <b-button class="btn-profile" @click="goTo(value.user_id)">See Profile</b-button>
             </div>
           </div>
         </div>
@@ -60,6 +60,7 @@
 import Header from '../components/_base/NavigationBar'
 import TopJobs from '../components/_base/HeaderTopJobs.vue'
 import Footer from '../components/_base/Footer'
+import router from '../router'
 import { mapGetters, mapActions, mapMutations } from 'vuex'
 
 export default {
@@ -85,8 +86,8 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['getProfileDataCompany', 'getAllWorkerData']),
-    ...mapMutations(['pageChange', 'setSort']),
+    ...mapActions(['getProfileDataCompany', 'getAllWorkerData', 'getTalentDataById']),
+    ...mapMutations(['pageChange', 'setSort', 'setTalentId']),
     onPage(value) {
       this.pageChange(value)
       this.getAllWorkerData()
@@ -106,13 +107,18 @@ export default {
         this.setSort(`AND profile.job_address = "${this.search}"`)
       }
       this.getAllWorkerData()
+    },
+    goTo(data) {
+      this.setTalentId(data)
+      this.getTalentDataById(data).then(result => {
+        router.push('/profile/talent')
+      })
     }
   },
   computed: {
-    ...mapGetters({ user: 'getUser', profile: 'getProfileCompany', workers: 'getAllWorker', perPage: 'getLimit', rows: 'getTotalRows' })
+    ...mapGetters({ user: 'getUser', profile: 'getProfileCompany', workers: 'getAllWorker', perPage: 'getLimit', rows: 'getTotalRows', talentData: 'getTalentData' })
   },
   created() {
-    this.pageChange(1)
     this.getProfileDataCompany(this.user.user_id)
     this.getAllWorkerData()
   }

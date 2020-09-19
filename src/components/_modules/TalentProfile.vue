@@ -1,7 +1,7 @@
 <template>
   <div class="p-container">
     <header>
-      <Navbar />
+      <Navbar :img="profile[0].profile_img"/>
     </header>
 
     <div class="content">
@@ -51,6 +51,7 @@ import UserProfile from '../_base/Profile/UserProfile'
 import UserSkill from '../_base/Profile/UserSkill'
 import UserContact from '../_base/Profile/UserContact'
 import UserPortfolio from '../_base/Profile/UserPortfolio'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'ProfileComponent',
@@ -64,6 +65,12 @@ export default {
   },
   data() {
     return {}
+  },
+  created() {
+    console.log(this.talentData)
+  },
+  computed: {
+    ...mapGetters({ talentData: 'getTalentData', profile: 'getProfileCompany' })
   }
 }
 </script>

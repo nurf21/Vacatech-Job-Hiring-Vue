@@ -4,9 +4,7 @@
       <h1>Skill</h1>
     </b-col>
     <b-col md="12" sm="12" class="text-center skill">
-      <b-button disabled size="md" class="b-button-skill">Java</b-button>
-      <b-button disabled size="md" class="b-button-skill">Phyton</b-button>
-      <b-button disabled size="md" class="b-button-skill">JavaScript</b-button>
+      <b-button disabled size="md" class="b-button-skill" v-for="(item, index) in talentData[0].skill" :key="index">{{item.skill_name}}</b-button>
     </b-col>
   </b-row>
 </template>
@@ -33,7 +31,12 @@
 </style>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
-  name: 'UserSkill'
+  name: 'UserSkill',
+  computed: {
+    ...mapGetters({ talentData: 'getTalentData' })
+  }
 }
 </script>

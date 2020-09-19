@@ -5,7 +5,7 @@
         <b-col>
           <b-img
             center
-            :src="url + '/' + talentData[0].profile[0].profile_img"
+            :src="url + '/' + data[0].profile_img"
             style="width: 150px; height: 150px; object-fit: cover"
             rounded="circle"
           ></b-img>
@@ -14,10 +14,10 @@
 
       <b-row class="main-profile">
         <b-col md="12" sm="12" class="text-center title">
-          <h1>{{ talentData[0].user_name }}</h1>
+          <h1>{{ user.user_name }}</h1>
         </b-col>
         <b-col md="12" sm="12" class="text-center role">
-          <p>{{ talentData[0].profile[0].profile_job }}</p>
+          <p>{{ data[0].profile_job }}</p>
         </b-col>
         <b-col md="12" sm="12" class="text-center location">
           <b-row class="justify-content-center">
@@ -25,19 +25,19 @@
               <b-img :src="require('../../../assets/icon/pin.png')"></b-img>
             </b-col>
             <b-col md="auto" align-self="end" class="mr-3" style="padding: 0">
-              <p>{{talentData[0].profile[0].job_address}}</p>
+              <p>{{data[0].job_address}}</p>
             </b-col>
           </b-row>
         </b-col>
         <b-col md="12" sm="12" class="text-center roles">
-          <p>{{talentData[0].profile[0].job_type}}</p>
+          <p>{{data[0].job_type}}</p>
         </b-col>
         <b-col md="12" sm="12" class="text-center about">
-          <p>{{talentData[0].profile[0].profile_desc}}</p>
+          <p>{{data[0].profile_desc}}</p>
         </b-col>
         <b-col md="4"></b-col>
         <b-col md="4" class="text-center hire">
-          <b-button size="md" block class="b-button-hire">Hire</b-button>
+          <b-button size="md" block class="b-button-hire">Edit Profile</b-button>
         </b-col>
         <b-col md="4"></b-col>
       </b-row>
@@ -53,7 +53,6 @@
   line-height: 56px;
   color: #1f2a36;
 }
-
 .main-profile .role p {
   font-style: normal;
   font-weight: normal;
@@ -61,7 +60,6 @@
   line-height: 24px;
   color: #1f2a36;
 }
-
 .main-profile .location p {
   font-style: normal;
   font-weight: normal;
@@ -70,7 +68,6 @@
   color: #9ea0a5;
   margin: 0;
 }
-
 .main-profile .roles p {
   font-style: normal;
   font-weight: normal;
@@ -79,7 +76,6 @@
   color: #9ea0a5;
   margin: 16px 0px;
 }
-
 .main-profile .about p {
   font-style: normal;
   font-weight: normal;
@@ -87,7 +83,6 @@
   line-height: 24px;
   color: #9ea0a5;
 }
-
 .main-profile .hire .b-button-hire {
   color: white;
   background-color: #5e50a1;
@@ -99,14 +94,13 @@ import { mapGetters } from 'vuex'
 
 export default {
   name: 'UserProfile',
-  props: ['img', 'name'],
   data() {
     return {
       url: process.env.VUE_APP_BASE_URL
     }
   },
   computed: {
-    ...mapGetters({ talentData: 'getTalentData' })
+    ...mapGetters({ user: 'getUser', data: 'getProfileTalent' })
   }
 }
 </script>

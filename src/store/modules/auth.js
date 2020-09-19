@@ -24,7 +24,6 @@ export default {
           .then(response => {
             context.commit('setUser', response.data.data)
             localStorage.setItem('token', response.data.data.token)
-            localStorage.setItem('num', response.data.data.user_id)
             resolve(response.data)
           })
           .catch(error => {
@@ -130,12 +129,12 @@ export default {
             ) {
               localStorage.removeItem('token')
               context.commit('delUser')
-              router.push('/login')
+              router.push('/')
               alert(error.response.data.msg)
             } else if (error.response.data.msg === 'jwt expired') {
               localStorage.removeItem('token')
               context.commit('delUser')
-              router.push('/login')
+              router.push('/')
               alert(error.response.data.msg)
             }
           }

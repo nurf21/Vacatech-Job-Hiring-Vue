@@ -7,7 +7,7 @@
       <b-row class="justify-content-center">
         <b-col class="text-center">
           <b-img :src="require('../../../assets/icon/mail.png')"></b-img>
-          <p>Louistommo@gmail.com</p>
+          <p>{{ talentData[0].user_email }}</p>
         </b-col>
       </b-row>
     </b-col>
@@ -15,7 +15,7 @@
       <b-row class="justify-content-center">
         <b-col class="text-center">
           <b-img :src="require('../../../assets/icon/instagram.png')"></b-img>
-          <p>@Louist91</p>
+          <p>{{talentData[0].profile[0].profile_instagram}}</p>
         </b-col>
       </b-row>
     </b-col>
@@ -23,7 +23,7 @@
       <b-row class="justify-content-center">
         <b-col class="text-center">
           <b-img :src="require('../../../assets/icon/github.png')"></b-img>
-          <p>@louistommo</p>
+          <p>{{talentData[0].profile[0].profile_git}}</p>
         </b-col>
       </b-row>
     </b-col>
@@ -31,7 +31,7 @@
       <b-row class="justify-content-center">
         <b-col class="text-center">
           <b-img :src="require('../../../assets/icon/gitlab.png')"></b-img>
-          <p>@louistommo</p>
+          <p>{{talentData[0].profile[0].profile_git}}</p>
         </b-col>
       </b-row>
     </b-col>
@@ -62,7 +62,12 @@
 </style>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
-  name: 'UserContact'
+  name: 'UserContact',
+  computed: {
+    ...mapGetters({ talentData: 'getTalentData' })
+  }
 }
 </script>
