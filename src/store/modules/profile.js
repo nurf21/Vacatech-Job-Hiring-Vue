@@ -88,6 +88,30 @@ export default {
             reject(error.response)
           })
       })
+    },
+    patchProfileImageTalent(context, payload) {
+      return new Promise((resolve, reject) => {
+        axios
+          .patch(`${process.env.VUE_APP_BASE_URL}/profile/worker/image/${payload.id}`, payload.form)
+          .then(response => {
+            resolve(response.data)
+          })
+          .catch(error => {
+            reject(error.response)
+          })
+      })
+    },
+    patchProfileTalent(context, payload) {
+      return new Promise((resolve, reject) => {
+        axios
+          .patch(`${process.env.VUE_APP_BASE_URL}/profile/worker/${payload.id}`, payload.form)
+          .then(response => {
+            resolve(response.data)
+          })
+          .catch(error => {
+            reject(error.response)
+          })
+      })
     }
   },
   getters: {

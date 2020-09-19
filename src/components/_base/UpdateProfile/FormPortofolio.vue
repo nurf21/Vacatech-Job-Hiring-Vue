@@ -6,36 +6,34 @@
           <p>Portofolio</p>
         </b-card-header>
         <b-card-body>
-          <b-form>
+          <b-form @submit.prevent="onSubmit()">
             <b-row class="component-form">
               <b-col class="text-left">
                 <label for="name" class="l-label">Nama Aplikasi</label>
-                <b-input type="text" id="name" placeholder="Masukan nama aplikasi" required></b-input>
+                <b-input type="text" id="name" v-model="form.portfolio_name" placeholder="Masukan nama aplikasi" required></b-input>
               </b-col>
             </b-row>
             <b-row class="component-form">
               <b-col class="text-left">
                 <label for="link" class="l-label">Link repository</label>
-                <b-input type="text" id="link" placeholder="Masukan link repository" required></b-input>
+                <b-input type="text" id="link" v-model="form.portfolio_link" placeholder="Masukan link repository" required></b-input>
               </b-col>
             </b-row>
             <b-row class="component-form">
               <b-col class="text-left">
                 <label for="type" class="l-label">Type portofolio</label>
-                <b-form-radio-group v-model="selected" :options="options" plain name="type"></b-form-radio-group>
+                <b-form-radio-group v-model="form.portfolio_type" :options="options" plain name="type"></b-form-radio-group>
               </b-col>
             </b-row>
             <b-row class="component-form">
               <b-col class="text-left">
                 <label for="pict" class="l-label">Upload gambar</label>
-                <b-form-file name="pict" v-model="file" accept=".jpg, .png"></b-form-file>
+                <b-form-file name="pict" @change="upFile" accept=".jpg, .png"></b-form-file>
               </b-col>
             </b-row>
+            <b-button block type="submit" size="lg" class="b-button-add">Tambah portofolio</b-button>
           </b-form>
         </b-card-body>
-        <b-card-footer footer-bg-variant="white">
-          <b-button block size="lg" class="b-button-add">Tambah portofolio</b-button>
-        </b-card-footer>
       </b-card>
     </b-col>
   </b-row>
@@ -78,16 +76,40 @@
 </style>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
+
 export default {
   name: 'FormPortofolio',
   data() {
     return {
-      selected: 'mobile',
-      file: null,
       options: [
-        { text: 'Aplikasi mobile', value: 'mobile' },
-        { text: 'Aplikasi web', value: 'web' }
-      ]
+        { text: 'Aplikasi Mobile', value: 'Aplikasi Mobile' },
+        { text: 'Aplikasi Web', value: 'Aplikasi Web' }
+      ],
+      form: {}
+    }
+  },
+  methods: {
+    ...mapActions(['getTalentDataById', 'postPortfolio']),
+    upFile(event) {
+      this.form.portfolio_img = event.target.files[0]
+    },
+    onSubmit() {
+      const data = new FormData()
+      data.append('user_id', this.form.user_id)
+      data.append('portfolio_name', this.form.portfolio_name)
+      data.append('portfolio_link', this.form.portfolio_link)
+      data.append('portfolio_type', this.form.portfolio_type)
+      data.append('portfolio_img', this.form.portfolio_img)
+      this.postPortfolio(data)
+    }
+  },
+  computed: {
+    ...mapGetters({ user: 'getUser', talentData: 'getTalentData' })
+  },
+  created() {
+    this.form = {
+      user_id: this.user.user_id
     }
   }
 }

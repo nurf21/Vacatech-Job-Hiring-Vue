@@ -1,7 +1,7 @@
 <template>
   <div class="p-container">
     <header>
-      <Navbar :img="data[0].profile_img"/>
+      <Navbar :img="talentData[0].profile[0].profile_img"/>
     </header>
 
     <div class="content">
@@ -39,15 +39,13 @@ export default {
   },
   name: 'Profile',
   methods: {
-    ...mapActions(['getProfileDataTalent', 'getTalentDataById'])
+    ...mapActions(['getTalentDataById'])
   },
   computed: {
-    ...mapGetters({ user: 'getUser', data: 'getProfileTalent' })
+    ...mapGetters({ user: 'getUser', talentData: 'getTalentData' })
   },
   created() {
-    this.getProfileDataTalent(this.user.user_id)
     this.getTalentDataById(this.user.user_id)
-    console.log(this.user)
   }
 }
 </script>

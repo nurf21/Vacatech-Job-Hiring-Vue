@@ -6,37 +6,19 @@
           <p>Skill</p>
         </b-card-header>
         <b-card-body>
-          <b-form>
+          <b-form @submit.prevent="onSubmit()">
             <b-row class="component-form">
               <b-col md="10">
-                <b-input type="text" id="name" placeholder="Masukan skill" required></b-input>
+                <b-input type="text" v-model="form.skill_name" id="name" placeholder="Masukan skill" required></b-input>
               </b-col>
               <b-col md="2">
-                <b-button class="b-button-save">Simpan</b-button>
+                <b-button class="b-button-save" type="submit">Simpan</b-button>
               </b-col>
             </b-row>
           </b-form>
           <b-row class="selected-skill">
-            <b-col md="auto" style="padding: 0em 0.8em 0em 0em;">
-              <b-button disabled size="md" block class="b-button-skill">Java</b-button>
-            </b-col>
-            <b-col md="auto" style="padding: 0em 0.8em 0em 0em;">
-              <b-button disabled size="md" block class="b-button-skill">AureliaJS</b-button>
-            </b-col>
-            <b-col md="auto" style="padding: 0em 0.8em 0em 0em;">
-              <b-button disabled size="md" block class="b-button-skill">AureliaJS</b-button>
-            </b-col>
-            <b-col md="auto" style="padding: 0em 0.8em 0em 0em;">
-              <b-button disabled size="md" block class="b-button-skill">AureliaJS</b-button>
-            </b-col>
-            <b-col md="auto" style="padding: 0em 0.8em 0em 0em;">
-              <b-button disabled size="md" block class="b-button-skill">AureliaJS</b-button>
-            </b-col>
-            <b-col md="auto" style="padding: 0em 0.8em 0em 0em;">
-              <b-button disabled size="md" block class="b-button-skill">Java</b-button>
-            </b-col>
-            <b-col md="auto" style="padding: 0em 0.8em 0em 0em;">
-              <b-button disabled size="md" block class="b-button-skill">AureliaJS</b-button>
+            <b-col md="auto" style="padding: 0em 0.8em 0em 0em;" v-for="(item, index) in talentData[0].skill" :key="index">
+              <b-button disabled size="md" block class="b-button-skill">{{item.skill_name}}</b-button>
             </b-col>
           </b-row>
         </b-card-body>
@@ -89,7 +71,35 @@
 </style>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
+
 export default {
-  name: 'FormSkill'
+  name: 'FormSkill',
+  data() {
+    return {
+      form: {}
+    }
+  },
+  methods: {
+    ...mapActions(['postSkill', 'getTalentDataById']),
+    onSubmit() {
+      this.postSkill(this.form).then(result => {
+        this.form = {
+          user_id: this.user.user_id,
+          skill_name: null
+        }
+        this.talentData = {}
+        this.getTalentDataById(this.user.user_id)
+      })
+    }
+  },
+  computed: {
+    ...mapGetters({ user: 'getUser', talentData: 'getTalentData' })
+  },
+  created() {
+    this.form = {
+      user_id: this.user.user_id
+    }
+  }
 }
 </script>

@@ -6,21 +6,21 @@
           <p>Pengalaman Kerja</p>
         </b-card-header>
         <b-card-body>
-          <b-form>
+          <b-form @submit.prevent="onSubmit()">
             <b-row class="component-form">
               <b-col class="text-left">
                 <label for="position" class="l-label">Posisi</label>
-                <b-input type="text" id="position" placeholder="web developer" required></b-input>
+                <b-input type="text" v-model="form.exp_position" id="position" placeholder="Web Developer" required></b-input>
               </b-col>
             </b-row>
             <b-row class="component-form">
               <b-col class="text-left">
                 <label for="company" class="l-label">Nama perusahaan</label>
-                <b-input type="text" id="company" placeholder="PT Harus bisa" required></b-input>
+                <b-input type="text" v-model="form.exp_company" id="company" placeholder="PT Harus bisa" required></b-input>
               </b-col>
               <b-col class="text-left">
-                <label for="date" class="l-label">Job Desk</label>
-                <b-input type="text" id="date" placeholder="Januari 2018" required></b-input>
+                <label for="date" class="l-label">Job Date</label>
+                <b-input type="text" v-model="form.exp_date" id="date" placeholder="Januari 2018" required></b-input>
               </b-col>
             </b-row>
             <b-row class="component-form">
@@ -28,6 +28,7 @@
                 <label for="description" class="l-label">Deskripsi Singkat</label>
                 <b-form-textarea
                   type="text"
+                  v-model="form.exp_desc"
                   rows="4"
                   id="description"
                   placeholder="Tuliskan deskripsi singkat"
@@ -35,11 +36,9 @@
                 ></b-form-textarea>
               </b-col>
             </b-row>
+            <b-button block size="lg" class="b-button-add" type="submit">Tambah pengalaman kerja</b-button>
           </b-form>
         </b-card-body>
-        <b-card-footer footer-bg-variant="white">
-          <b-button block size="lg" class="b-button-add">Tambah pengalaman kerja</b-button>
-        </b-card-footer>
       </b-card>
     </b-col>
   </b-row>
@@ -82,7 +81,28 @@
 </style>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
+
 export default {
-  name: 'FormPengalamanKerja'
+  name: 'FormPengalamanKerja',
+  data() {
+    return {
+      form: {}
+    }
+  },
+  methods: {
+    ...mapActions(['getTalentDataById', 'postExp']),
+    onSubmit() {
+      this.postExp(this.form)
+    }
+  },
+  computed: {
+    ...mapGetters({ user: 'getUser', talentData: 'getTalentData' })
+  },
+  created() {
+    this.form = {
+      user_id: this.user.user_id
+    }
+  }
 }
 </script>

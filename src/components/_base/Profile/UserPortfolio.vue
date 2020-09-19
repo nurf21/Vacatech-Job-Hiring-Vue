@@ -16,8 +16,8 @@
         </b-tab>
         <b-tab title="Pengalaman Kerja">
           <b-row>
-            <b-col md="8">
-              <b-row v-for="(value, index) in talentData[0].experience" :key="index">
+            <b-col md="6" v-for="(value, index) in talentData[0].experience" :key="index">
+              <b-row>
                 <b-col md="12" class="job"><p>{{value.exp_position}}</p></b-col>
                 <b-col md="12" class="company"><p>{{value.exp_company}}</p></b-col>
                 <b-col md="4" class="date"
