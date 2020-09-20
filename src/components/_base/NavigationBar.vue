@@ -2,11 +2,11 @@
   <b-navbar class="nav-container">
     <b-navbar-brand class="nav-brand" v-if="user.user_role === 2">
       <router-link to="/home">
-        <img src="../../assets/logo/Vacatech.png" />
+        <img src="../../assets/logo/vacatechPurple.png" />
       </router-link>
     </b-navbar-brand>
     <b-navbar-brand class="nav-brand" v-else>
-      <img src="../../assets/logo/Vacatech.png" />
+      <img src="../../assets/logo/vacatechPurple.png" />
     </b-navbar-brand>
     <b-navbar-nav class="ml-auto nav-item">
       <b-nav-item>
