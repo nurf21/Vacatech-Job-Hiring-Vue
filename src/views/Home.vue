@@ -86,7 +86,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['getProfileDataCompany', 'getAllWorkerData', 'getTalentDataById']),
+    ...mapActions(['getProfileDataCompany', 'getAllWorkerData', 'getTalentDataById', 'logout']),
     ...mapMutations(['pageChange', 'setSort', 'setTalentId']),
     onPage(value) {
       this.pageChange(value)
@@ -119,7 +119,10 @@ export default {
     ...mapGetters({ user: 'getUser', profile: 'getProfileCompany', workers: 'getAllWorker', perPage: 'getLimit', rows: 'getTotalRows', talentData: 'getTalentData' })
   },
   created() {
-    this.getProfileDataCompany(this.user.user_id)
+    this.getProfileDataCompany(this.user.user_id).catch(error => {
+      this.logout()
+      throw error
+    })
     this.getAllWorkerData()
   }
 }

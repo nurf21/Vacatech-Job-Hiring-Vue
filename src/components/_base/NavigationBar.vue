@@ -14,11 +14,16 @@
           <b-col>
             <b-img :src="require('../../assets/icon/bell.png')" id="popover-target-1"></b-img>
             <b-popover target="popover-target-1" triggers="hover" placement="bottom">
-              <b-img :src="require('../../assets/img/notif0.png')" id="popover-target-1"></b-img>
+              <b-img :src="require('../../assets/img/notif0.png')" v-show="!isNotif"></b-img>
+              <div class="notification" v-for="(value, index) in notif" :key="index">
+                <p>{{ value.notif }} (<span>{{value.notif_created_at.split('T').join(', ').slice(0, 17)}}</span>)</p>
+              </div>
             </b-popover>
           </b-col>
           <b-col>
-            <b-img :src="require('../../assets/icon/mail.png')"></b-img>
+            <router-link to="/roomchat">
+              <b-img :src="require('../../assets/icon/mail.png')"></b-img>
+            </router-link>
           </b-col>
           <b-col>
             <b-img
@@ -80,11 +85,13 @@ export default {
         width: 32,
         height: 32,
         class: 'm1'
-      }
+      },
+      form: {},
+      isNotif: false
     }
   },
   methods: {
-    ...mapActions({ handleLogout: 'logout' }),
+    ...mapActions({ handleLogout: 'logout', handleNotif: 'getNotification' }),
     confirmLogout() {
       this.$bvModal
         .msgBoxConfirm('Are you sure want to logout?', {
@@ -103,7 +110,15 @@ export default {
     }
   },
   computed: {
-    ...mapGetters({ user: 'getUser' })
+    ...mapGetters({ user: 'getUser', notif: 'getNotif' })
+  },
+  created() {
+    this.handleNotif(this.user.user_id).then(result => {
+      this.isNotif = true
+    }).catch(error => {
+      this.isNotif = false
+      console.log(error)
+    })
   }
 }
 </script>

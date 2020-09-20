@@ -6,6 +6,7 @@ import Profile from './modules/profile'
 import Skill from './modules/skill'
 import Experience from './modules/experience'
 import Portfolio from './modules/portfolio'
+import Message from './modules/message'
 
 Vue.use(Vuex)
 
@@ -15,7 +16,8 @@ export default new Vuex.Store({
     Profile,
     Skill,
     Experience,
-    Portfolio
+    Portfolio,
+    Message
   },
   state: {},
   mutations: {},

@@ -30,8 +30,8 @@
               <b-form-textarea
                 style="color: #9EA0A5;"
                 id="textarea"
-                v-model="text"
-                placeholder="Masukkan pesan yang ingin andai kirimkan"
+                v-model="form.msg"
+                placeholder="Masukkan pesan yang ingin anda kirimkan kepada talent"
                 rows="3"
                 max-rows="6"
               ></b-form-textarea>
@@ -47,13 +47,13 @@
 
 <script>
 import Header from '../components/_base/NavigationBar'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import Footer from '../components/_base/Footer'
 export default {
   data() {
     return {
-      text: '',
-      url: process.env.VUE_APP_BASE_URL
+      url: process.env.VUE_APP_BASE_URL,
+      form: {}
     }
   },
   components: {
@@ -61,12 +61,19 @@ export default {
     Footer
   },
   methods: {
+    ...mapActions(['postRoomChat']),
     onSubmit() {
-      console.log(this.text)
+      this.postRoomChat(this.form)
     }
   },
   computed: {
     ...mapGetters({ profile: 'getProfileCompany', talentData: 'getTalentData' })
+  },
+  created() {
+    this.form = {
+      user_worker: this.talentData[0].user_id,
+      user_recruiter: this.profile[0].user_id
+    }
   }
 }
 </script>
