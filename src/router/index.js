@@ -88,6 +88,12 @@ const routes = [
     name: 'Hire',
     component: () => import('../views/Hire.vue'),
     meta: { requiresAuth: true }
+  },
+  {
+    path: '/roomchat',
+    name: 'Roomchat',
+    component: () => import('../views/RoomChat.vue'),
+    meta: { requiresVisitor: true }
   }
 ]
 

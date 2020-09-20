@@ -39,7 +39,7 @@
       <b-col md="6">
         <b-row>
           <b-col>
-            <h1>Kenapa harus mencari tallent di peworld</h1>
+            <h1>Kenapa harus mencari talent di Vacantech</h1>
           </b-col>
         </b-row>
 

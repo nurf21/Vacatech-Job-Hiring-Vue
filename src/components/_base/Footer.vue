@@ -3,7 +3,7 @@
     <b-col class="text-left">
       <b-row class="brand">
         <b-col>
-          <b-img :src="require('../../assets/logo/light.png')"></b-img>
+          <b-img :src="require('../../assets/logo/vacatechwhite.png')"></b-img>
         </b-col>
       </b-row>
       <b-row class="description">
@@ -18,7 +18,7 @@
       </b-row>
       <b-row class="contact">
         <b-col md="4">
-          <p>2020 Pewworld. All right reserved</p>
+          <p>2020 Vacantech. All right reserved</p>
         </b-col>
         <b-col md="2" offset-md="4" class="text-right">
           <p>Telepon</p>
@@ -51,6 +51,13 @@
 
 .footer hr {
   border: 1px solid white;
+}
+
+.footer img {
+  width: 178px;
+  height: 50px;
+  left: 150px;
+  top: 2041px;
 }
 </style>
 

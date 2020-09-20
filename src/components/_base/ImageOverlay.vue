@@ -8,7 +8,7 @@
     </div>
     <div class="text">
       <div class="text-image">
-        <img src="../../assets/logo/light.png" />
+        <img src="../../assets/logo/vacatechwhite.png" />
       </div>
       <div class="text-text">
         <h1>Temukan developer berbakat dan terbaik di berbagai bidang keahlian</h1>

@@ -2,29 +2,19 @@
   <b-navbar class="nav-container">
     <b-navbar-brand class="nav-brand" v-if="user.user_role === 2">
       <router-link to="/home">
-        <img src="../../assets/logo/primary.png" />
+        <img src="../../assets/logo/Vacatech.png" />
       </router-link>
     </b-navbar-brand>
     <b-navbar-brand class="nav-brand" v-else>
-      <img src="../../assets/logo/primary.png" />
+      <img src="../../assets/logo/Vacatech.png" />
     </b-navbar-brand>
     <b-navbar-nav class="ml-auto nav-item">
       <b-nav-item>
         <b-row>
           <b-col>
-            <b-img
-              :src="require('../../assets/icon/bell.png')"
-              id="popover-target-1"
-            ></b-img>
-            <b-popover
-              target="popover-target-1"
-              triggers="hover"
-              placement="bottom"
-            >
-              <b-img
-                :src="require('../../assets/img/notif0.png')"
-                id="popover-target-1"
-              ></b-img>
+            <b-img :src="require('../../assets/icon/bell.png')" id="popover-target-1"></b-img>
+            <b-popover target="popover-target-1" triggers="hover" placement="bottom">
+              <b-img :src="require('../../assets/img/notif0.png')" id="popover-target-1"></b-img>
             </b-popover>
           </b-col>
           <b-col>
@@ -37,29 +27,18 @@
               rounded="circle"
               alt="Circle image"
               id="popover-target-2"
-              >></b-img
-            >
-            <b-popover
-              target="popover-target-2"
-              triggers="hover"
-              placement="bottom"
-            >
+            >></b-img>
+            <b-popover target="popover-target-2" triggers="hover" placement="bottom">
               <b-navbar variant="faded" type="light">
                 <router-link to="/profile" v-if="user.user_role === 1">
-                  <b-navbar-brand>
-                    Profile
-                  </b-navbar-brand>
+                  <b-navbar-brand>Profile</b-navbar-brand>
                 </router-link>
                 <router-link to="/profile/company" v-if="user.user_role === 2">
-                  <b-navbar-brand>
-                    Profile
-                  </b-navbar-brand>
+                  <b-navbar-brand>Profile</b-navbar-brand>
                 </router-link>
               </b-navbar>
               <b-navbar variant="faded" type="light">
-                <b-navbar-brand @click="confirmLogout" class="logout">
-                  Logout
-                </b-navbar-brand>
+                <b-navbar-brand @click="confirmLogout" class="logout">Logout</b-navbar-brand>
               </b-navbar>
             </b-popover>
           </b-col>
@@ -80,7 +59,7 @@
 .nav-brand img {
   width: 127px;
   height: 35px;
-  object-fit: cover;
+  object-fit: fill;
 }
 
 .logout {
