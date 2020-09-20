@@ -3,7 +3,7 @@
     <b-col class="text-left">
       <b-row class="brand">
         <b-col>
-          <b-img :src="require('../../assets/logo/vacatechwhite.png')"></b-img>
+          <b-img :src="require('../../assets/logo/vacatechWhite.png')"></b-img>
         </b-col>
       </b-row>
       <b-row class="description">
