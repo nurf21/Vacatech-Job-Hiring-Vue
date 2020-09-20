@@ -1,106 +1,42 @@
 <template>
   <div style="width:100%; background-color: #E5E5E5;">
-    <Header
-      class="py-4"
-      style="background-color: white; box-shadow: 0px 10px 50px rgba(132, 132, 132, 0.25);"
-    />
+    <Header class="py-3" :img="profile[0].profile_img"/>
     <div class="page-container">
       <div class="profile-info">
-        <div class="image"></div>
+        <div class="image"><b-img :src="url + '/' + talentData[0].profile[0].profile_img" class="image"></b-img></div>
         <div style="padding:0 30px">
-          <h4>Louis Tomlinson</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum erat orci.</p>
-          <p>Purwokerto, Jawa Tengah</p>
-          <p
-            style="color: #9EA0A5;"
-          >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum erat orci, mollis nec gravida sed, ornare quis urna. Curabitur eu lacus fringilla, vestibulum risus at.</p>
+          <h4>{{talentData[0].user_name}}</h4>
+          <p>{{talentData[0].profile[0].profile_job}}</p>
+          <p>{{talentData[0].profile[0].job_address}}</p>
+          <p style="color: #9EA0A5;">{{talentData[0].profile[0].profile_desc}}</p>
           <h4>Skill</h4>
           <div class="skills">
-            <div class="skill">Phyton</div>
-            <div class="skill">Laravek</div>
-            <div class="skill">Golang</div>
-            <div class="skill">Javascript</div>
-            <div class="skill">PHP</div>
-            <div class="skill">HTML</div>
-            <div class="skill">C++</div>
-            <div class="skill">Kotlin</div>
-            <div class="skill">Swift</div>
+            <div class="skill" v-for="(value, index) in talentData[0].skill" :key="index">{{value.skill_name}}</div>
           </div>
         </div>
       </div>
       <div class="hire-info">
-        <h2>Hubungi Lous Tomlinson</h2>
+        <h2>Hubungi {{talentData[0].user_name}}</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.</p>
         <br />
         <div>
-          <b-form @submit="onSubmit" @reset="onReset" v-if="show">
-            <b-form-group
-              style="color: #9EA0A5;"
-              id="input-group-3"
-              label="Tujuan tentang pesan ini"
-              label-for="input-3"
-            >
-              <b-form-select style="color: #9EA0A5;" id="input-3" :options="foods" required></b-form-select>
-            </b-form-group>
+          <b-form @submit.prevent="onSubmit()">
             <b-form-group
               style="color: #9EA0A5;"
               id="input-group-2"
-              label="Nama Lengkap"
-              label-for="input-2"
-            >
-              <b-form-input
-                style="color: #9EA0A5;"
-                id="input-2"
-                v-model="form.user_name"
-                required
-                placeholder="Masukan nama lengkap"
-              ></b-form-input>
-            </b-form-group>
-            <b-form-group
-              style="color: #9EA0A5;"
-              id="input-group-1"
-              label="Email"
-              label-for="input-1"
-            >
-              <b-form-input
-                style="color: #9EA0A5;"
-                id="input-1"
-                v-model="form.user_mail"
-                type="email"
-                required
-                placeholder="Masukan email"
-              ></b-form-input>
-            </b-form-group>
-            <b-form-group
-              style="color: #9EA0A5;"
-              id="input-group-2"
-              label="No Handpone"
-              label-for="input-2"
-            >
-              <b-form-input
-                style="color: #9EA0A5;"
-                id="input-2"
-                v-model="form.user_phone"
-                required
-                placeholder="Masukan no handpone"
-              ></b-form-input>
-            </b-form-group>
-            <b-form-group
-              style="color: #9EA0A5;"
-              id="input-group-2"
-              label="Deskripsi"
+              label="Pesan"
               label-for="textarea"
             >
               <b-form-textarea
                 style="color: #9EA0A5;"
                 id="textarea"
                 v-model="text"
-                placeholder="Deskripsikan/Jelaskan lebih detail"
+                placeholder="Masukkan pesan yang ingin andai kirimkan"
                 rows="3"
                 max-rows="6"
               ></b-form-textarea>
             </b-form-group>
-            <b-button block class="mt-5 btn-hire">Hire</b-button>
+            <b-button block class="mt-5 btn-hire" type="submit">Hire</b-button>
           </b-form>
         </div>
       </div>
@@ -110,23 +46,27 @@
 </template>
 
 <script>
-import Header from '../components/HeaderLogin'
-import Footer from '../components/Footer'
+import Header from '../components/_base/NavigationBar'
+import { mapGetters } from 'vuex'
+import Footer from '../components/_base/Footer'
 export default {
   data() {
     return {
-      form: {
-        email: '',
-        name: '',
-        checked: []
-      },
-      foods: [{ text: 'Project', value: null }],
-      show: true
+      text: '',
+      url: process.env.VUE_APP_BASE_URL
     }
   },
   components: {
     Header,
     Footer
+  },
+  methods: {
+    onSubmit() {
+      console.log(this.text)
+    }
+  },
+  computed: {
+    ...mapGetters({ profile: 'getProfileCompany', talentData: 'getTalentData' })
   }
 }
 </script>
@@ -157,8 +97,7 @@ export default {
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  background: black;
-  margin: 30px auto;
+  margin: 30px auto 50px auto;
 }
 .hire-info {
   width: 700px;

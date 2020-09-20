@@ -5,40 +5,36 @@
         <b-col>
           <b-img
             center
-            :src="url + '/' + talentData[0].profile[0].profile_img"
+            :src="url + '/' + company[0].profile_img"
             style="width: 150px; height: 150px; object-fit: cover"
             rounded="circle"
           ></b-img>
         </b-col>
       </b-row>
-
       <b-row class="main-profile">
         <b-col md="12" sm="12" class="text-center title">
-          <h1>{{ talentData[0].user_name }}</h1>
+          <h1>{{ user.company_name }}</h1>
         </b-col>
         <b-col md="12" sm="12" class="text-center role">
-          <p>{{ talentData[0].profile[0].profile_job }}</p>
+          <p>{{ company[0].profile_field }}</p>
         </b-col>
         <b-col md="12" sm="12" class="text-center location">
           <b-row class="justify-content-center">
             <b-col md="auto" style="padding: 0" class="mr-1">
-              <b-img :src="require('../../../assets/icon/pin.png')"></b-img>
+              <b-img :src="require('../../../assets/icon/pin.png')" v-if="company[0].city"></b-img>
             </b-col>
             <b-col md="auto" align-self="end" class="mr-3" style="padding: 0">
-              <p>{{talentData[0].profile[0].job_address}}</p>
+              <p>{{ company[0].city }}</p>
             </b-col>
           </b-row>
         </b-col>
-        <b-col md="12" sm="12" class="text-center roles">
-          <p>{{talentData[0].profile[0].job_type}}</p>
-        </b-col>
         <b-col md="12" sm="12" class="text-center about">
-          <p>{{talentData[0].profile[0].profile_desc}}</p>
+          <p>{{ company[0].desc }}</p>
         </b-col>
         <b-col md="4"></b-col>
         <b-col md="4" class="text-center hire">
-          <router-link to="/hire">
-            <b-button size="md" block class="b-button-hire">Hire</b-button>
+          <router-link to="/update/company">
+            <b-button size="md" block class="b-button-hire">Edit Profile</b-button>
           </router-link>
         </b-col>
         <b-col md="4"></b-col>
@@ -108,7 +104,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters({ talentData: 'getTalentData' })
+    ...mapGetters({ user: 'getUser', talentData: 'getTalentData', company: 'getProfileCompany' })
   }
 }
 </script>

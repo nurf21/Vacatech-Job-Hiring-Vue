@@ -3,7 +3,7 @@ import axios from 'axios'
 export default {
   state: {
     profileTalent: {},
-    profileDataCompany: {},
+    profileData: {},
     workerList: {},
     talentId: null,
     talentData: {},
@@ -101,10 +101,34 @@ export default {
           })
       })
     },
+    patchProfileImageCompany(context, payload) {
+      return new Promise((resolve, reject) => {
+        axios
+          .patch(`${process.env.VUE_APP_BASE_URL}/company/image/${payload.id}`, payload.form)
+          .then(response => {
+            resolve(response.data)
+          })
+          .catch(error => {
+            reject(error.response)
+          })
+      })
+    },
     patchProfileTalent(context, payload) {
       return new Promise((resolve, reject) => {
         axios
           .patch(`${process.env.VUE_APP_BASE_URL}/profile/worker/${payload.id}`, payload.form)
+          .then(response => {
+            resolve(response.data)
+          })
+          .catch(error => {
+            reject(error.response)
+          })
+      })
+    },
+    patchProfileCompany(context, payload) {
+      return new Promise((resolve, reject) => {
+        axios
+          .patch(`${process.env.VUE_APP_BASE_URL}/company/${payload.id}`, payload.form)
           .then(response => {
             resolve(response.data)
           })

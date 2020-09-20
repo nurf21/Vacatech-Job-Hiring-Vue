@@ -45,7 +45,12 @@
               placement="bottom"
             >
               <b-navbar variant="faded" type="light">
-                <router-link to="/profile">
+                <router-link to="/profile" v-if="user.user_role === 1">
+                  <b-navbar-brand>
+                    Profile
+                  </b-navbar-brand>
+                </router-link>
+                <router-link to="/profile/company" v-if="user.user_role === 2">
                   <b-navbar-brand>
                     Profile
                   </b-navbar-brand>

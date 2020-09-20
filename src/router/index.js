@@ -82,6 +82,12 @@ const routes = [
     name: 'UpdateCompanyProfile',
     component: () => import('../views/UpdateCompanyProfile.vue'),
     meta: { requiresAuth: true }
+  },
+  {
+    path: '/hire',
+    name: 'Hire',
+    component: () => import('../views/Hire.vue'),
+    meta: { requiresAuth: true }
   }
 ]
 

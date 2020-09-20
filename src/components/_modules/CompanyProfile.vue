@@ -1,7 +1,7 @@
 <template>
   <div class="p-container">
     <header>
-      <Navbar />
+      <Navbar :img="profile[0].profile_img" />
     </header>
 
     <div class="content">
@@ -44,8 +44,9 @@
 <script>
 import Navbar from '../_base/NavigationBar'
 import Footer from '../_base/Footer'
-import UserProfile from '../_base/Profile/UserProfile'
-import UserContact from '../_base/Profile/UserContact'
+import UserProfile from '../_base/Profile/CompanyDetail'
+import UserContact from '../_base/Profile/CompanyContact'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'ProfileComponent',
@@ -57,6 +58,9 @@ export default {
   },
   data() {
     return {}
+  },
+  computed: {
+    ...mapGetters({ user: 'getUser', profile: 'getProfileCompany' })
   }
 }
 </script>
