@@ -2,10 +2,9 @@
   <b-container>
     <b-row>
       <b-col class="text-left">
-        <h3>Halo, Teman Vaca!</h3>
+        <h3>Halo, Vacafriends</h3>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod
-          ipsum et dui rhoncus auctor.
+          Solusi tepat untuk memulai karir anda sebagai developer.
         </p>
       </b-col>
     </b-row>
@@ -23,6 +22,7 @@
                 type="text"
                 id="name"
                 v-model="form.user_name"
+                placeholder="Masukkan nama panjang"
                 required
               ></b-input>
             </b-col>
@@ -34,6 +34,7 @@
                 type="email"
                 id="email"
                 v-model="form.user_email"
+                placeholder="Masukkan alamat email"
                 required
               ></b-input>
             </b-col>
@@ -45,6 +46,7 @@
                 type="text"
                 id="handphone"
                 v-model="form.user_phone"
+                placeholder="Masukka no. handphone"
                 required
               ></b-input>
             </b-col>
@@ -56,6 +58,7 @@
                 type="password"
                 id="password"
                 v-model="form.user_password"
+                placeholder="Masukkan kata sandi"
                 required
               ></b-input>
             </b-col>
@@ -67,6 +70,7 @@
                 type="password"
                 id="confirmpassword"
                 v-model="form.confirm_password"
+                placeholder="Masukkan konfirmasi kata sandi"
                 required
               ></b-input>
             </b-col>

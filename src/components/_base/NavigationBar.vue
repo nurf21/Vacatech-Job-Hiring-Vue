@@ -34,6 +34,7 @@
               id="popover-target-2"
             >></b-img>
             <b-popover target="popover-target-2" triggers="hover" placement="bottom">
+              <template v-slot:title>Halo, {{user.user_name}}</template>
               <b-navbar variant="faded" type="light">
                 <router-link to="/profile" v-if="user.user_role === 1">
                   <b-navbar-brand>Profile</b-navbar-brand>

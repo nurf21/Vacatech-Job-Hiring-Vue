@@ -94,25 +94,25 @@ export default {
         {
           user_id: 1,
           user_name: 'Harry Styles',
-          user_role: 'Web Developer',
+          user_role: 'CEO of PT. ABC',
           user_comment:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+            'Vacatech membantu saya menemukan talent yang terbaik.',
           user_img: 'cat1.jpg'
         },
         {
           user_id: 2,
           user_name: 'Louis Tomlinson',
-          user_role: 'Web Developer',
+          user_role: 'HRD of PT. DEF',
           user_comment:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.',
+            'Mencari developer yang handal tanpa dipungut biaya sangat mudah di Vacatech',
           user_img: 'cat2.jpg'
         },
         {
           user_id: 3,
           user_name: 'Liam Payne',
-          user_role: 'Mobile Developer',
+          user_role: 'Cat',
           user_comment:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.',
+            'Meow. (Feed me hooman)',
           user_img: 'cat3.jpg'
         },
         {
@@ -120,7 +120,7 @@ export default {
           user_name: 'Zayn Malik',
           user_role: 'Fullstack Developer',
           user_comment:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.',
+            'Vacatech sangat mempermudah saya dalam mencari pekerjaan sesuai dengan bidang yang saya kuasai',
           user_img: 'cat4.jpg'
         },
         {
@@ -128,40 +128,16 @@ export default {
           user_name: 'Niall Horan',
           user_role: 'QA Engineer',
           user_comment:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.',
+            'Berkat Vacatech sekarang saya bekerja di salah satu perusahaan terbesar di Indonesia',
           user_img: 'cat5.jpg'
         },
         {
           user_id: 6,
-          user_name: 'Niall and The Potato',
-          user_role: 'UX Researcher',
+          user_name: 'Niall',
+          user_role: 'Kitten',
           user_comment:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.',
+            '...',
           user_img: 'cat6.jpg'
-        },
-        {
-          user_id: 7,
-          user_name: 'Kevin The Pigeon',
-          user_role: 'Project Manager',
-          user_comment:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.',
-          user_img: 'cat7.jpg'
-        },
-        {
-          user_id: 8,
-          user_name: 'Larry Stylinson',
-          user_role: 'UI/UX Designer',
-          user_comment:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.',
-          user_img: 'cat8.jpg'
-        },
-        {
-          user_id: 9,
-          user_name: 'One Addition',
-          user_role: 'Data Engineer',
-          user_comment:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.',
-          user_img: 'cat9.jpg'
         }
       ]
     }

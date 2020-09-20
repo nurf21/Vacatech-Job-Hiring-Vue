@@ -3,12 +3,12 @@
     <b-col class="text-left">
       <b-row class="brand">
         <b-col>
-          <b-img :src="require('../../assets/logo/vacatechWhite.png')"></b-img>
+          <b-img :src="require('../../assets/logo/vacatechwhite.png')"></b-img>
         </b-col>
       </b-row>
       <b-row class="description">
         <b-col md="5">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ineuismod ipsum et dui rhoncus auctor.</p>
+          <p>Vacatech bertekad untuk menghubungkan para talent dan perekrut untuk perubahan revolusi 4.0.</p>
         </b-col>
       </b-row>
       <b-row class="line">
@@ -18,13 +18,13 @@
       </b-row>
       <b-row class="contact">
         <b-col md="4">
-          <p>2020 Vacantech. All right reserved</p>
+          <p>© 2020 Vacantech. All right reserved</p>
         </b-col>
-        <b-col md="2" offset-md="4" class="text-right">
-          <p>Telepon</p>
+        <b-col md="2" offset-md="3" class="text-right">
+          <p>Telepon <br> 08772248740</p>
         </b-col>
-        <b-col md="2" class="text-right">
-          <p>Email</p>
+        <b-col md="3" class="text-right">
+          <p>Email <br> vacatechsolution@gmail.com</p>
         </b-col>
       </b-row>
     </b-col>
