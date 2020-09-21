@@ -1,10 +1,10 @@
 <template>
   <div class="login-container">
     <b-row>
-      <b-col md="6" sm="6" class="content-left">
+      <b-col md="6" class="content-left">
         <ImageOverlay />
       </b-col>
-      <b-col md="6" sm="6" class="content-right">
+      <b-col md="6" sm="12" class="content-right">
         <Form />
       </b-col>
     </b-row>
@@ -20,6 +20,22 @@
 
 .login-container .content-right {
   padding: 5em 0em;
+}
+
+@media screen and (max-width: 768px) {
+  .login-container .content-right {
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .login-container .content-left {
+    display: none;
+  }
+
+  .login-container .content-right {
+    padding: 0;
+  }
 }
 </style>
 

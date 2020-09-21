@@ -63,6 +63,54 @@
   line-height: 70px;
   color: #ffffff;
 }
+
+@media screen and (max-width: 768px) {
+  .img-container {
+    width: 300px;
+    height: 400px;
+  }
+
+  .image-content {
+    position: absolute;
+  }
+
+  .image-content img {
+    width: 300px;
+    height: 450px;
+    object-fit: cover;
+  }
+
+  .image-overlay {
+    position: absolute;
+  }
+
+  .image-overlay img {
+    width: 300px;
+    height: 450px;
+    object-fit: cover;
+  }
+
+  .text {
+    position: relative;
+    padding: 2.75em;
+  }
+
+  .text .text-image img {
+    max-height: 24px;
+  }
+
+  .text .text-text {
+    padding: 5em 0em;
+  }
+
+  .text .text-text h1 {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 36px;
+    color: #ffffff;
+  }
+}
 </style>
 
 <script>

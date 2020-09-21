@@ -16,23 +16,13 @@
           <b-row class="component-form">
             <b-col class="text-left">
               <label for="email">Email</label>
-              <b-input
-                type="email"
-                id="email"
-                v-model="form.user_email"
-                required
-              ></b-input>
+              <b-input type="email" id="email" v-model="form.user_email" required></b-input>
             </b-col>
           </b-row>
           <b-row class="component-form">
             <b-col class="text-left">
               <label for="password">Kata Sandi</label>
-              <b-input
-                type="password"
-                id="password"
-                v-model="form.user_password"
-                required
-              ></b-input>
+              <b-input type="password" id="password" v-model="form.user_password" required></b-input>
             </b-col>
           </b-row>
           <b-row class="component-form">
@@ -48,8 +38,7 @@
                 type="submit"
                 block
                 style="background-color: #FBB017; border-color: transparent;"
-                >Login</b-button
-              >
+              >Login</b-button>
             </b-col>
           </b-row>
         </b-form>
@@ -59,21 +48,11 @@
       <b-col class="text-center">
         <p>
           Anda belum punya akun?
-          <span style="color: #FBB017" id="popover-target-1"
-            >Daftar disini</span
-          >
-          <b-popover
-            target="popover-target-1"
-            triggers="hover"
-            placement="bottom"
-          >
-            <router-link to="/register/worker">
-              Daftar sebagai pekerja >
-            </router-link>
+          <span style="color: #FBB017" id="popover-target-1">Daftar disini</span>
+          <b-popover target="popover-target-1" triggers="hover" placement="bottom">
+            <router-link to="/register/worker">Daftar sebagai pekerja ></router-link>
             <br />
-            <router-link to="/register/recruiter">
-              Daftar sebagai perekrut >
-            </router-link>
+            <router-link to="/register/recruiter">Daftar sebagai perekrut ></router-link>
           </b-popover>
         </p>
       </b-col>
@@ -114,14 +93,14 @@ export default {
     ...mapActions(['login']),
     onSubmit() {
       this.login(this.form)
-        .then(result => {
+        .then((result) => {
           if (result.data.user_role === 1) {
             this.$router.push('/profile')
           } else if (result.data.user_role === 2) {
             this.$router.push('/home')
           }
         })
-        .catch(error => {
+        .catch((error) => {
           this.isError = true
           this.error = error.data.msg
         })
