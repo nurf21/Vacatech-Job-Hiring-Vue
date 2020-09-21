@@ -21,6 +21,7 @@
                 type="email"
                 id="email"
                 v-model="form.user_email"
+                placeholder="Masukkan alamat email"
                 required
               ></b-input>
             </b-col>

@@ -2,11 +2,8 @@
   <b-container>
     <b-row>
       <b-col class="text-left">
-        <h3>Halo, Teman Vaca!</h3>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod
-          ipsum et dui rhoncus auctor.
-        </p>
+        <h3>Halo, Vacafriends</h3>
+        <p>Masuk untuk memulai koneksi dengan perusahaan dan developer terbaik.</p>
       </b-col>
     </b-row>
     <b-row class="login-form">
@@ -16,19 +13,31 @@
           <b-row class="component-form">
             <b-col class="text-left">
               <label for="email">Email</label>
-              <b-input type="email" id="email" v-model="form.user_email" required></b-input>
+              <b-input
+                type="email"
+                id="email"
+                v-model="form.user_email"
+                placeholder="Masukkan alamat email"
+                required
+              ></b-input>
             </b-col>
           </b-row>
           <b-row class="component-form">
             <b-col class="text-left">
               <label for="password">Kata Sandi</label>
-              <b-input type="password" id="password" v-model="form.user_password" required></b-input>
+              <b-input
+                type="password"
+                id="password"
+                v-model="form.user_password"
+                placeholder="Masukkan kata sandi"
+                required
+              ></b-input>
             </b-col>
           </b-row>
           <b-row class="component-form">
             <b-col class="text-right">
               <router-link to="/reset">
-                <p>Lupa kata sandi?</p>
+                <p style="color: black">Lupa kata sandi?</p>
               </router-link>
             </b-col>
           </b-row>
@@ -48,7 +57,10 @@
       <b-col class="text-center">
         <p>
           Anda belum punya akun?
-          <span style="color: #FBB017" id="popover-target-1">Daftar disini</span>
+          <span
+            style="color: #FBB017;cursor:pointer"
+            id="popover-target-1"
+          >Daftar disini</span>
           <b-popover target="popover-target-1" triggers="hover" placement="bottom">
             <router-link to="/register/worker">Daftar sebagai pekerja ></router-link>
             <br />

@@ -93,7 +93,7 @@ const routes = [
     path: '/roomchat',
     name: 'Roomchat',
     component: () => import('../views/RoomChat.vue'),
-    meta: { requiresVisitor: true }
+    meta: { requiresAuth: true }
   }
 ]
 

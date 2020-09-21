@@ -1,7 +1,7 @@
 <template>
   <b-navbar class="nav-container">
     <b-navbar-brand>
-      <b-img v-bind="styleImg" :src="require('../../assets/logo/Vacatech.png')"></b-img>
+      <b-img v-bind="styleImg" :src="require('../../assets/logo/vacatechPurple.png')"></b-img>
     </b-navbar-brand>
     <b-navbar-nav class="ml-auto">
       <router-link to="/login">

@@ -13,8 +13,7 @@
         <b-row>
           <b-col>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-              euismod ipsum et dui rhoncus auctor.
+              Vacatech adalah sebuah platform yang menghubungkan para perekrut dan talenta.
             </p>
           </b-col>
         </b-row>
@@ -39,7 +38,7 @@
       <b-col md="6">
         <b-row>
           <b-col>
-            <h1>Kenapa harus mencari talent di Vacantech</h1>
+            <h1>Kenapa harus mencari talent di Vacatech</h1>
           </b-col>
         </b-row>
 
@@ -50,7 +49,7 @@
                 <b-img :src="require('../assets/icon/tick.png')"></b-img>
               </b-col>
               <b-col>
-                <p>Lorem ipsum dolor sit amet.</p>
+                <p>Tidak dipungut biaya.</p>
               </b-col>
             </b-row>
             <b-row>
@@ -58,7 +57,7 @@
                 <b-img :src="require('../assets/icon/tick.png')"></b-img>
               </b-col>
               <b-col>
-                <p>Lorem ipsum dolor sit amet.</p>
+                <p>Developer berbakat di berbagai bidang keahlian.</p>
               </b-col>
             </b-row>
             <b-row>
@@ -66,7 +65,7 @@
                 <b-img :src="require('../assets/icon/tick.png')"></b-img>
               </b-col>
               <b-col>
-                <p>Lorem ipsum dolor sit amet.</p>
+                <p>Skill talent yang up-to-date.</p>
               </b-col>
             </b-row>
             <b-row>
@@ -74,7 +73,7 @@
                 <b-img :src="require('../assets/icon/tick.png')"></b-img>
               </b-col>
               <b-col>
-                <p>Lorem ipsum dolor sit amet.</p>
+                <p>Kirim pesan langsung kepada talent.</p>
               </b-col>
             </b-row>
           </b-col>
@@ -92,8 +91,7 @@
         <b-row>
           <b-col>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-              euismod ipsum et dui rhoncus auctor.
+              Berbagai macam bahasa pemrograman dah skill lainnya
             </p>
           </b-col>
         </b-row>
@@ -207,7 +205,7 @@
 
     <b-row class="start-now">
       <b-col md="4">
-        <h1>Lorem ipsum dolor sit amet</h1>
+        <h1>Sudah siap untuk berkarir?</h1>
       </b-col>
       <b-col md="4" offset-md="4" align-self="center" class="text-right">
         <router-link to="/register/recruiter">

@@ -21,10 +21,10 @@
         <b-col md="12" sm="12" class="text-center location">
           <b-row class="justify-content-center">
             <b-col md="auto" style="padding: 0" class="mr-1">
-              <b-img :src="require('../../../assets/icon/pin.png')" v-if="company[0].city"></b-img>
+              <b-img :src="require('../../../assets/icon/pin.png')" v-if="company[0].profile_city !== ''"></b-img>
             </b-col>
             <b-col md="auto" align-self="end" class="mr-3" style="padding: 0">
-              <p>{{ company[0].city }}</p>
+              <p>{{ company[0].profile_city }}</p>
             </b-col>
           </b-row>
         </b-col>

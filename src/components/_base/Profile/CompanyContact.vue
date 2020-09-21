@@ -65,10 +65,6 @@ export default {
   name: 'UserContact',
   computed: {
     ...mapGetters({ company: 'getProfileCompany', user: 'getUser' })
-  },
-  created() {
-    console.log(this.company)
-    console.log(this.user)
   }
 }
 </script>
