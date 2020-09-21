@@ -8,7 +8,7 @@
       </b-row>
       <b-row class="description">
         <b-col md="5">
-          <p>Vacatech bertekad untuk menghubungkan para talent dan perekrut untuk perubahan revolusi 4.0.</p>
+          <p>Vacatech bertekad untuk membantu para developer mendapatkan pekerjaan sesuai keahliannya dan membantu perushaan yang sedang mencari developer yang berbakat.</p>
         </b-col>
       </b-row>
       <b-row class="line">
