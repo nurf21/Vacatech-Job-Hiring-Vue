@@ -41,7 +41,7 @@ VUE_APP_ENDPOINT = [Backend API]
 
 ## Team
 
-> All Members of Default Team
+> All Members of Vacateam
 
 | <a href="https://blog.udacity.com/2014/12/front-end-vs-back-end-vs-full-stack-web-developers.html" target="_blank">**Full-Stack Developer & Team Leader**</a> | <a href="https://blog.udacity.com/2014/12/front-end-vs-back-end-vs-full-stack-web-developers.html" target="_blank">**Front-End Developer**</a> | <a href="https://blog.udacity.com/2014/12/front-end-vs-back-end-vs-full-stack-web-developers.html" target="_blank">**Front-End Developer**</a> | <a href="https://blog.udacity.com/2014/12/front-end-vs-back-end-vs-full-stack-web-developers.html" target="_blank">**Back-End Developer**</a> | <a href="https://blog.udacity.com/2014/12/front-end-vs-back-end-vs-full-stack-web-developers.html" target="_blank">**Back-End Developer**</a> | 
 | :---: |:---:| :---:|:---:| :---:|
