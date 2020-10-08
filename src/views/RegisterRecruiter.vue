@@ -23,6 +23,24 @@
   overflow: auto;
   height: 90vh;
 }
+
+@media screen and (max-width: 768px) {
+  .register-container .content-right {
+    padding: 0;
+    overflow: auto;
+    height: 80vh;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .register-container .content-left {
+    display: none;
+  }
+
+  .register-container .content-right {
+    padding: 0;
+  }
+}
 </style>
 
 <script>

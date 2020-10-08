@@ -3,9 +3,7 @@
     <b-row>
       <b-col class="text-left">
         <h3>Halo, Vacafriends</h3>
-        <p>
-          Masuk untuk memulai koneksi dengan perusahaan dan developer terbaik.
-        </p>
+        <p>Masuk untuk memulai koneksi dengan perusahaan dan developer terbaik.</p>
       </b-col>
     </b-row>
     <b-row class="login-form">
