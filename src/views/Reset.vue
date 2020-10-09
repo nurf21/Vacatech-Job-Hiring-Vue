@@ -21,6 +21,22 @@
 .login-container .content-right {
   padding: 5em 0em;
 }
+
+@media screen and (max-width: 768px) {
+  .login-container .content-right {
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .login-container .content-left {
+    display: none;
+  }
+
+  .login-container .content-right {
+    padding: 0;
+  }
+}
 </style>
 
 <script>

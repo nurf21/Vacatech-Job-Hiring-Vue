@@ -43,7 +43,7 @@
               <b-button
                 type="submit"
                 block
-                style="background-color: #FBB017; border-color: transparent;"
+                style="background-color: #fbb017; border-color: transparent"
                 >Reset Password</b-button
               >
             </b-col>
@@ -89,14 +89,22 @@ export default {
         form: this.form
       }
       this.changePassword(payload)
-        .then(result => {
+        .then((result) => {
           this.isError = false
           this.isSuccess = true
         })
-        .catch(error => {
+        .catch((error) => {
           this.isError = true
           this.error = error.data.msg
+          this.makeToast(this.error, 'Error', 'danger')
         })
+    },
+    makeToast(msg, title, variant) {
+      this.$bvToast.toast(msg, {
+        title: title,
+        variant: variant,
+        solid: true
+      })
     }
   }
 }

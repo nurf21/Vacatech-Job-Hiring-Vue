@@ -12,7 +12,9 @@
     <b-row class="login-form">
       <b-col>
         <b-alert show variant="danger" v-show="isError">{{ error }}</b-alert>
-        <b-alert show variant="success" v-show="isSuccess">Password reset link has been sent to your email.</b-alert>
+        <b-alert show variant="success" v-show="isSuccess"
+          >Password reset link has been sent to your email.</b-alert
+        >
         <b-form @submit.prevent="onSubmit" v-show="!isSuccess">
           <b-row class="component-form">
             <b-col class="text-left">
@@ -31,7 +33,7 @@
               <b-button
                 type="submit"
                 block
-                style="background-color: #FBB017; border-color: transparent;"
+                style="background-color: #fbb017; border-color: transparent"
                 >Send password reset email</b-button
               >
             </b-col>
@@ -73,14 +75,22 @@ export default {
     ...mapActions(['sendEmail']),
     onSubmit() {
       this.sendEmail(this.form)
-        .then(result => {
+        .then((result) => {
           this.isError = false
           this.isSuccess = true
         })
-        .catch(error => {
+        .catch((error) => {
           this.isError = true
           this.error = error.data.msg
+          this.makeToast(this.error, 'Error', 'danger')
         })
+    },
+    makeToast(msg, title, variant) {
+      this.$bvToast.toast(msg, {
+        title: title,
+        variant: variant,
+        solid: true
+      })
     }
   }
 }

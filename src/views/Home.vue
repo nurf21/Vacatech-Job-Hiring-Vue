@@ -1,12 +1,17 @@
 <template>
   <div>
-    <b-col cols="12" style="padding: 0;">
-      <Header class="py-3" :img="profile[0].profile_img"/>
+    <b-col cols="12" style="padding: 0">
+      <Header class="py-3" :img="profile[0].profile_img" />
       <TopJobs />
       <b-container>
         <div class="form pt-3">
           <div class="search-name">
-            <b-form-input id="input-1" v-model="search" placeholder="Search for talent's location"></b-form-input>
+            <b-form-input
+              id="input-1"
+              v-model="search"
+              v-on:keyup.enter="onSearch()"
+              placeholder="Search for talent's location"
+            ></b-form-input>
           </div>
           <div class="img-search">
             <img src="../assets/icon/search.png" alt />
@@ -14,7 +19,12 @@
           <div class="line"></div>
           <div class="form-sort">
             <b-form-group id="input-group-3">
-              <b-form-select id="input-3" v-model="sort" :options="sortBy"  @change="onChange($event)" ></b-form-select>
+              <b-form-select
+                id="input-3"
+                v-model="sort"
+                :options="sortBy"
+                @change="onChange($event)"
+              ></b-form-select>
             </b-form-group>
           </div>
           <div>
@@ -24,19 +34,35 @@
         <div class="worker mt-5">
           <div class="workers" v-for="(value, index) in workers" :key="index">
             <div class="profile">
-              <b-img :src="url + '/' + value.profile[0].profile_img" fluid class="profile-img" />
+              <b-img
+                :src="url + '/' + value.profile[0].profile_img"
+                fluid
+                class="profile-img"
+              />
               <div class="profile-details">
                 <h4>{{ value.user_name }}</h4>
-                <p style="color: #9EA0A5; margin-bottom: 0px">{{ value.profile[0].profile_job }}</p>
-                <p style="color: #9EA0A5;">{{ value.profile[0].job_type }}</p>
-                <p style="color: #9EA0A5; margin-top: -10px">{{ value.profile[0].job_address }}</p>
+                <p style="color: #9ea0a5; margin-bottom: 0px">
+                  {{ value.profile[0].profile_job }}
+                </p>
+                <p style="color: #9ea0a5">{{ value.profile[0].job_type }}</p>
+                <p style="color: #9ea0a5; margin-top: -10px">
+                  {{ value.profile[0].job_address }}
+                </p>
                 <div class="skills">
-                  <div class="skill" v-for="(item, index) in value.skill" :key="index">{{ item.skill_name }}</div>
+                  <div
+                    class="skill"
+                    v-for="(item, index) in value.skill"
+                    :key="index"
+                  >
+                    {{ item.skill_name }}
+                  </div>
                 </div>
               </div>
             </div>
             <div style="position: relative">
-            <b-button class="btn-profile" @click="goTo(value.user_id)">See Profile</b-button>
+              <b-button class="btn-profile" @click="goTo(value.user_id)"
+                >See Profile</b-button
+              >
             </div>
           </div>
         </div>
@@ -78,15 +104,26 @@ export default {
         { text: 'Sort', value: null },
         { text: 'Sortir berdasarkan nama', value: 'ORDER BY user_name' },
         { text: 'Sortir berdasarkan lokasi', value: 'ORDER BY job_address' },
-        { text: 'Sortir berdasarkan freelance', value: 'AND job_type = "Freelance"' },
-        { text: 'Sortir berdasarkan fulltime', value: 'AND job_type = "Full Time"' }
+        {
+          text: 'Freelance',
+          value: 'AND job_type = "Freelance"'
+        },
+        {
+          text: 'Fulltime',
+          value: 'AND job_type = "Full Time"'
+        }
       ],
       url: process.env.VUE_APP_BASE_URL,
       currentPage: 1
     }
   },
   methods: {
-    ...mapActions(['getProfileDataCompany', 'getAllWorkerData', 'getTalentDataById', 'logout']),
+    ...mapActions([
+      'getProfileDataCompany',
+      'getAllWorkerData',
+      'getTalentDataById',
+      'logout'
+    ]),
     ...mapMutations(['pageChange', 'setSort', 'setTalentId']),
     onPage(value) {
       this.pageChange(value)
@@ -110,16 +147,23 @@ export default {
     },
     goTo(data) {
       this.setTalentId(data)
-      this.getTalentDataById(data).then(result => {
+      this.getTalentDataById(data).then((result) => {
         router.push('/profile/talent')
       })
     }
   },
   computed: {
-    ...mapGetters({ user: 'getUser', profile: 'getProfileCompany', workers: 'getAllWorker', perPage: 'getLimit', rows: 'getTotalRows', talentData: 'getTalentData' })
+    ...mapGetters({
+      user: 'getUser',
+      profile: 'getProfileCompany',
+      workers: 'getAllWorker',
+      perPage: 'getLimit',
+      rows: 'getTotalRows',
+      talentData: 'getTalentData'
+    })
   },
   created() {
-    this.getProfileDataCompany(this.user.user_id).catch(error => {
+    this.getProfileDataCompany(this.user.user_id).catch((error) => {
       this.logout()
       throw error
     })
