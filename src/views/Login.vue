@@ -37,6 +37,16 @@
     padding: 0;
   }
 }
+
+@media screen and (max-width: 1024px) {
+  .login-container .content-left {
+    box-sizing: border-box;
+  }
+
+  /* .login-container .content-right {
+    padding: 0;
+  } */
+}
 </style>
 
 <script>
