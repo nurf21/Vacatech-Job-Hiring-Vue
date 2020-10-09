@@ -1,7 +1,7 @@
 <template>
   <div class="p-container">
     <header>
-      <Navbar :img="talentData[0].profile[0].profile_img"/>
+      <Navbar :img="talentData[0].profile[0].profile_img" />
     </header>
 
     <div class="content">
@@ -46,6 +46,9 @@ export default {
   },
   created() {
     this.getTalentDataById(this.user.user_id)
+    if (!this.talentData[0].profile[0].job_type) {
+      this.$router.push('/update/talent')
+    }
   }
 }
 </script>

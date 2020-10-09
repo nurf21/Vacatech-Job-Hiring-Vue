@@ -2,10 +2,17 @@
   <b-row>
     <b-col md="12" sm="12">
       <b-tabs content-class="mt-3">
-        <b-tab title="Portofolio" active>
+        <b-tab
+          title="Portofolio"
+          active
+          v-if="talentData[0].portfolio.length > 0"
+        >
           <div class="p-container">
             <b-row>
-              <b-col v-for="(value, index) in talentData[0].portfolio" :key="index">
+              <b-col
+                v-for="(value, index) in talentData[0].portfolio"
+                :key="index"
+              >
                 <b-img :src="url + '/' + value.portfolio_img"></b-img>
                 <a :href="value.portfolio_link">
                   <p>{{ value.portfolio_name }}</p>
@@ -14,18 +21,29 @@
             </b-row>
           </div>
         </b-tab>
-        <b-tab title="Pengalaman Kerja">
+        <b-tab
+          title="Pengalaman Kerja"
+          v-if="talentData[0].experience.length > 0"
+        >
           <b-row>
-            <b-col md="6" v-for="(value, index) in talentData[0].experience" :key="index">
+            <b-col
+              md="6"
+              v-for="(value, index) in talentData[0].experience"
+              :key="index"
+            >
               <b-row>
-                <b-col md="12" class="job"><p>{{value.exp_position}}</p></b-col>
-                <b-col md="12" class="company"><p>{{value.exp_company}}</p></b-col>
+                <b-col md="12" class="job"
+                  ><p>{{ value.exp_position }}</p></b-col
+                >
+                <b-col md="12" class="company"
+                  ><p>{{ value.exp_company }}</p></b-col
+                >
                 <b-col md="4" class="date"
-                  ><p>{{value.exp_date}}</p></b-col
+                  ><p>{{ value.exp_date }}</p></b-col
                 >
                 <b-col md="4"></b-col>
                 <b-col md="12" class="tasks">
-                  <p>{{value.exp_desc}}</p>
+                  <p>{{ value.exp_desc }}</p>
                 </b-col>
                 <b-col md="12"><hr /></b-col>
               </b-row>

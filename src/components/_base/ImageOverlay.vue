@@ -11,7 +11,9 @@
         <img src="../../assets/logo/vacatechwhite.png" />
       </div>
       <div class="text-text">
-        <h1>Temukan developer berbakat dan terbaik di berbagai bidang keahlian</h1>
+        <h1>
+          Temukan developer berbakat dan terbaik di berbagai bidang keahlian
+        </h1>
       </div>
     </div>
   </div>
@@ -109,6 +111,42 @@
     font-size: 22px;
     line-height: 36px;
     color: #ffffff;
+  }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 800px) {
+  .img-container {
+    max-width: 420px;
+    max-height: 570px;
+  }
+
+  .image-content {
+    position: absolute;
+  }
+
+  .image-content img {
+    max-width: 420px;
+    max-height: 570px;
+    object-fit: cover;
+  }
+
+  .image-overlay {
+    position: absolute;
+  }
+
+  .image-overlay img {
+    max-width: 420px;
+    max-height: 570px;
+    object-fit: cover;
+  }
+
+  .text .text-text {
+    padding: 7em 0em;
+  }
+
+  .text .text-text h1 {
+    font-size: 36px;
+    line-height: 36px;
   }
 }
 </style>

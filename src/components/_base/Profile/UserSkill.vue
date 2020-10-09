@@ -1,10 +1,17 @@
 <template>
-  <b-row class="skills">
+  <b-row class="skills" v-if="talentData[0].skill.length > 0">
     <b-col md="12" sm="12" class="text-center title">
       <h1>Skill</h1>
     </b-col>
     <b-col md="12" sm="12" class="text-center skill">
-      <b-button disabled size="md" class="b-button-skill" v-for="(item, index) in talentData[0].skill" :key="index">{{item.skill_name}}</b-button>
+      <b-button
+        disabled
+        size="md"
+        class="b-button-skill"
+        v-for="(item, index) in talentData[0].skill"
+        :key="index"
+        >{{ item.skill_name }}</b-button
+      >
     </b-col>
   </b-row>
 </template>
