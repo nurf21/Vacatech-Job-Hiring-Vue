@@ -42,7 +42,7 @@
           </b-col>
         </b-row>
 
-        <b-row>
+        <b-row class="list">
           <b-col>
             <b-row>
               <b-col md="1">
@@ -331,6 +331,42 @@
 
   .start-now .b-button-sn {
     padding: 10px 5px;
+  }
+}
+
+@media screen and (max-width: 425px){
+  .col-md-6 img.ill {
+    display: none;
+  }
+
+  .main-content-1 p {
+    margin: 35px 0px;
+  }
+
+  .main-content-2 .col-md-1, .main-content-3 .col-md-1 {
+    max-width: 20px;
+  }
+
+  .main-content-2 .list {
+    margin-top: 2em;
+  }
+
+  .start-now {
+    padding: 1em 2em;
+    margin: 5em 2em;
+    text-align: center;
+  }
+
+  .start-now h1 {
+    font-size: 1rem;
+  }
+
+  .start-now .text-right {
+    text-align: center !important;
+  }
+
+  .start-now .b-button-sn {
+    padding: 5px 3px;
   }
 }
 </style>

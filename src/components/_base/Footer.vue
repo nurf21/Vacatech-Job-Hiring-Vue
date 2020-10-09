@@ -18,7 +18,7 @@
       </b-row>
       <b-row class="contact">
         <b-col md="4">
-          <p>© 2020 Vacantech. All right reserved</p>
+          <p>© 2020 Vacatech. All right reserved</p>
         </b-col>
         <b-col md="2" offset-md="3" class="text-right">
           <p>Telepon <br> 08772248740</p>
@@ -80,6 +80,18 @@
 
   .contact p {
     font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .footer img {
+    width: 150px;
+    height: 40px;
+  }
+
+  .footer p {
+    font-size: 1rem;
+    line-height: 1.8rem;
   }
 }
 </style>
