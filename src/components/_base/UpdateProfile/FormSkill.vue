@@ -58,7 +58,7 @@
             <b-button class="b-button-save" type="submit">Simpan</b-button>
           </b-col>
           <b-col md="2" class="mt-3">
-            <b-button variant="danger">Hapus</b-button>
+            <b-button variant="danger" @click="showDelBox()">Hapus</b-button>
           </b-col>
         </b-row>
       </b-form>
@@ -117,29 +117,70 @@ export default {
   data() {
     return {
       form: {},
-      formUpdate: {}
+      formUpdate: {},
+      skillId: ''
     }
   },
   methods: {
-    ...mapActions(['postSkill', 'getTalentDataById']),
+    ...mapActions([
+      'postSkill',
+      'getTalentDataById',
+      'patchSkill',
+      'deleteSkill'
+    ]),
     onSubmit() {
       this.postSkill(this.form).then((result) => {
         this.form = {
           user_id: this.user.user_id,
           skill_name: null
         }
-        this.talentData = {}
         this.makeToast('Skill added', 'Success', 'success')
         this.getTalentDataById(this.user.user_id)
       })
     },
     onClick(data) {
+      this.skillId = data.skill_id
       this.formUpdate = {
+        user_id: data.user_id,
         skill_name: data.skill_name
       }
     },
     onUpdate() {
-      console.log(this.formUpdate)
+      const payload = {
+        id: this.skillId,
+        form: this.formUpdate
+      }
+      this.patchSkill(payload).then((response) => {
+        this.$bvModal.hide('modal-center')
+        this.makeToast(response.msg, 'Success', 'success')
+        this.getTalentDataById(this.user.user_id)
+      })
+    },
+    showDelBox() {
+      this.$bvModal
+        .msgBoxConfirm('Apakah kamu yakin ingin menghapus skill ini ?', {
+          title: 'Delete Skill',
+          size: 'sm',
+          buttonSize: 'sm',
+          okVariant: 'danger',
+          okTitle: 'YES',
+          cancelTitle: 'NO',
+          footerClass: 'p-2',
+          hideHeaderClose: false,
+          centered: true
+        })
+        .then((value) => {
+          if (value === true) {
+            this.deleteSkill(this.skillId).then((response) => {
+              this.$bvModal.hide('modal-center')
+              this.makeToast(response.msg, 'Success', 'success')
+              this.getTalentDataById(this.user.user_id)
+            })
+          }
+        })
+        .catch((error) => {
+          console.log(error)
+        })
     },
     makeToast(msg, title, variant) {
       this.$bvToast.toast(msg, {

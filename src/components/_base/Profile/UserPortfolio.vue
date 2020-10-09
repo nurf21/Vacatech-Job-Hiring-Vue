@@ -13,9 +13,12 @@
                 v-for="(value, index) in talentData[0].portfolio"
                 :key="index"
               >
-                <b-img :src="url + '/' + value.portfolio_img"></b-img>
+                <b-img
+                  :src="url + '/' + value.portfolio_img"
+                  v-if="value.portfolio_img"
+                ></b-img>
                 <a :href="value.portfolio_link">
-                  <p>{{ value.portfolio_name }}</p>
+                  <p>{{ value.portfolio_name }} ({{ value.portfolio_type }})</p>
                 </a>
               </b-col>
             </b-row>
