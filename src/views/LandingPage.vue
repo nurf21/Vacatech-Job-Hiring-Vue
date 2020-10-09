@@ -198,8 +198,11 @@
       <b-col md="12" class="text-center">
         <h1>Their opinion about peworld</h1>
       </b-col>
-      <b-col md="12" class="card-carousel">
-        <CardCarousel />
+      <b-col md="12" class="card-carousel-web">
+        <CardCarouselWeb />
+      </b-col>
+      <b-col md="12" class="card-carousel-mobile">
+        <CardCarouselMobile />
       </b-col>
     </b-row>
 
@@ -285,6 +288,10 @@
   padding: 15px 10px;
 }
 
+.card-carousel-mobile {
+  display: none;
+}
+
 @media screen and (max-width: 768px) {
   .main-content-1, .main-content-2, .main-content-3 {
     padding: 4em;
@@ -332,6 +339,10 @@
   .start-now .b-button-sn {
     padding: 10px 5px;
   }
+
+  .card-carousel-mobile {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 425px){
@@ -368,19 +379,67 @@
   .start-now .b-button-sn {
     padding: 5px 3px;
   }
+
+  .card-carousel-web {
+    display: none;
+  }
+
+  .card-carousel-mobile {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .card-carousel-web {
+    display: none;
+  }
+
+  .card-carousel-mobile {
+    display: block;
+  }
+
+  .main-content-1 {
+    padding: 2em;
+    margin: 3em 0em;
+  }
+
+  .main-content-2, .main-content-3 {
+    padding: 2em;
+    margin-bottom: 3em;
+  }
+
+  .main-content-1 h1, .main-content-2 h1, .main-content-3 h1, .their-opinion h1 {
+    font-size: 1.5rem;
+    line-height: 1.8rem;
+  }
+
+  .main-content-2 p, .main-content-3 p {
+    font-size: 0.8rem;
+  }
+
+  .main-content-2 img.ill, .main-content-3 img.ill {
+    width: 15px;
+    height: 15px;
+  }
+
+  .start-now {
+    padding: 1em;
+  }
 }
 </style>
 
 <script>
 import Navbar from '../components/_base/Navbar'
-import CardCarousel from '../components/_base/CardCarousel'
+import CardCarouselWeb from '../components/_base/CardCarousel'
+import CardCarouselMobile from '../components/_base/CardCarouselMobile'
 import Footer from '../components/_base/Footer'
 
 export default {
   name: 'Home',
   components: {
     Navbar,
-    CardCarousel,
+    CardCarouselWeb,
+    CardCarouselMobile,
     Footer
   },
   data() {
