@@ -45,6 +45,12 @@
   border: transparent;
   color: white;
 }
+
+@media screen and (max-width: 768px) {
+  .nav-container {
+    padding: 1em 3em;
+  }
+}
 </style>
 
 <script>
