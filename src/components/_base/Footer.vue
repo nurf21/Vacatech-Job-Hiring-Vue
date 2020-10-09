@@ -94,6 +94,12 @@
     line-height: 1.8rem;
   }
 }
+
+@media screen and (max-width: 320px) {
+  .footer {
+    padding: 2em;
+  }
+}
 </style>
 
 <script>

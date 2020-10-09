@@ -66,6 +66,20 @@
     margin-right: 5px;
   }
 }
+
+@media screen and (max-width: 320px) {
+  .nav-container {
+    padding: 1em;
+  }
+
+  a {
+    align-self: center;
+  }
+
+  .navbar-nav {
+    display: flex;
+  }
+}
 </style>
 
 <script>
