@@ -9,7 +9,13 @@
           <b-form @submit.prevent="onSubmit()">
             <b-row class="component-form">
               <b-col md="10">
-                <b-input type="text" v-model="form.skill_name" id="name" placeholder="Masukan skill" required></b-input>
+                <b-input
+                  type="text"
+                  v-model="form.skill_name"
+                  id="name"
+                  placeholder="Masukan skill"
+                  required
+                ></b-input>
               </b-col>
               <b-col md="2">
                 <b-button class="b-button-save" type="submit">Simpan</b-button>
@@ -17,13 +23,46 @@
             </b-row>
           </b-form>
           <b-row class="selected-skill">
-            <b-col md="auto" style="padding: 0em 0.8em 0em 0em;" v-for="(item, index) in talentData[0].skill" :key="index">
-              <b-button disabled size="md" block class="b-button-skill">{{item.skill_name}}</b-button>
+            <b-col
+              md="auto"
+              style="padding: 0em 0.8em 0em 0em"
+              v-for="(item, index) in talentData[0].skill"
+              :key="index"
+            >
+              <b-button
+                size="md"
+                block
+                class="b-button-skill"
+                @click="onClick(item)"
+                v-b-modal.modal-center
+                >{{ item.skill_name }}</b-button
+              >
             </b-col>
           </b-row>
         </b-card-body>
       </b-card>
     </b-col>
+    <b-modal id="modal-center" title="Edit Skill" centered hide-footer>
+      <b-form @submit.prevent="onUpdate()">
+        <b-row class="component-form">
+          <b-col md="12">
+            <b-input
+              type="text"
+              v-model="formUpdate.skill_name"
+              id="name"
+              placeholder="Masukan skill"
+              required
+            ></b-input>
+          </b-col>
+          <b-col md="2" class="mt-3">
+            <b-button class="b-button-save" type="submit">Simpan</b-button>
+          </b-col>
+          <b-col md="2" class="mt-3">
+            <b-button variant="danger">Hapus</b-button>
+          </b-col>
+        </b-row>
+      </b-form>
+    </b-modal>
   </b-row>
 </template>
 
@@ -77,19 +116,36 @@ export default {
   name: 'FormSkill',
   data() {
     return {
-      form: {}
+      form: {},
+      formUpdate: {}
     }
   },
   methods: {
     ...mapActions(['postSkill', 'getTalentDataById']),
     onSubmit() {
-      this.postSkill(this.form).then(result => {
+      this.postSkill(this.form).then((result) => {
         this.form = {
           user_id: this.user.user_id,
           skill_name: null
         }
         this.talentData = {}
+        this.makeToast('Skill added', 'Success', 'success')
         this.getTalentDataById(this.user.user_id)
+      })
+    },
+    onClick(data) {
+      this.formUpdate = {
+        skill_name: data.skill_name
+      }
+    },
+    onUpdate() {
+      console.log(this.formUpdate)
+    },
+    makeToast(msg, title, variant) {
+      this.$bvToast.toast(msg, {
+        title: title,
+        variant: variant,
+        solid: true
       })
     }
   },

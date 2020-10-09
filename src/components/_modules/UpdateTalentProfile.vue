@@ -328,10 +328,12 @@ export default {
         .then((result) => {
           this.talentData = {}
           this.form = {}
+          console.log(result)
+          this.makeToast('Profile image updated', 'Success', 'success')
           this.getTalentDataById(this.user.user_id)
         })
         .catch((error) => {
-          console.log(error)
+          this.makeToast(error.data.msg, 'Error', 'danger')
         })
     },
     onSave() {
@@ -341,6 +343,7 @@ export default {
       }
       this.patchProfileTalent(payload).then((result) => {
         this.talentData = {}
+        this.makeToast('Profile updated', 'Success', 'success')
         this.getTalentDataById(this.user.user_id)
       })
     },
@@ -355,7 +358,7 @@ export default {
   created() {
     this.getTalentDataById(this.user.user_id).then((response) => {
       if (!response.data[0].profile[0].profile_address) {
-        this.makeToast('Please update your profile first', 'Error', 'danger')
+        this.makeToast('Please update your profile first', 'Info', 'info')
       }
     })
     this.formProfile = {

@@ -39,14 +39,7 @@ export default {
   },
   name: 'Profile',
   methods: {
-    ...mapActions(['getTalentDataById']),
-    makeToast(msg, title, variant) {
-      this.$bvToast.toast(msg, {
-        title: title,
-        variant: variant,
-        solid: true
-      })
-    }
+    ...mapActions(['getTalentDataById'])
   },
   computed: {
     ...mapGetters({ user: 'getUser', talentData: 'getTalentData' })
@@ -55,7 +48,6 @@ export default {
     this.getTalentDataById(this.user.user_id).then((response) => {
       if (!response.data[0].profile[0].profile_address) {
         this.$router.push('/update/talent')
-        this.makeToast('Please update your profile first', 'Error', 'danger')
       }
     })
     // if (!this.talentData[0].profile[0].job_type) {
