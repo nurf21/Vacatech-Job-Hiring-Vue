@@ -17,23 +17,28 @@
           <h1>{{ talentData[0].user_name }}</h1>
         </b-col>
         <b-col md="12" sm="12" class="text-center role">
-          <p>{{ talentData[0].profile[0].profile_job }}</p>
+          <p v-if="talentData[0].profile[0].profile_job">
+            {{ talentData[0].profile[0].profile_job }}
+          </p>
         </b-col>
         <b-col md="12" sm="12" class="text-center location">
-          <b-row class="justify-content-center">
+          <b-row
+            class="justify-content-center"
+            v-if="talentData[0].profile[0].job_address"
+          >
             <b-col md="auto" style="padding: 0" class="mr-1">
               <b-img :src="require('../../../assets/icon/pin.png')"></b-img>
             </b-col>
             <b-col md="auto" align-self="end" class="mr-3" style="padding: 0">
-              <p>{{talentData[0].profile[0].job_address}}</p>
+              <p>{{ talentData[0].profile[0].job_address }}</p>
             </b-col>
           </b-row>
         </b-col>
         <b-col md="12" sm="12" class="text-center roles">
-          <p>{{talentData[0].profile[0].job_type}}</p>
+          <p>{{ talentData[0].profile[0].job_type }}</p>
         </b-col>
         <b-col md="12" sm="12" class="text-center about">
-          <p>{{talentData[0].profile[0].profile_desc}}</p>
+          <p>{{ talentData[0].profile[0].profile_desc }}</p>
         </b-col>
         <b-col md="4"></b-col>
         <b-col md="4" class="text-center hire">
