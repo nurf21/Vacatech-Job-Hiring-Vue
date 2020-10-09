@@ -1,6 +1,6 @@
 <template>
   <div class="up-container">
-    <Navbar class="nav" :img="talentData[0].profile[0].profile_img"/>
+    <Navbar class="nav" :img="talentData[0].profile[0].profile_img" />
 
     <div class="content">
       <b-row class="main-content">
@@ -11,27 +11,45 @@
                 <b-img
                   :src="url + '/' + talentData[0].profile[0].profile_img"
                   rounded="circle"
-                  style="width: 150px; height: 150px; object-fit: cover;"
+                  style="width: 150px; height: 150px; object-fit: cover"
                 ></b-img>
                 <div class="edit-icon">
-                  <input type="file" ref="file" @change="upFile" style="display: none">
-                  <p @click="$refs.file.click()" style="cursor: pointer;">Edit <b-icon icon="pencil-fill"></b-icon>
+                  <input
+                    type="file"
+                    ref="file"
+                    @change="upFile"
+                    style="display: none"
+                  />
+                  <p @click="$refs.file.click()" style="cursor: pointer">
+                    Edit <b-icon icon="pencil-fill"></b-icon>
                   </p>
                 </div>
                 <div class="text-left">
-                  <b-card-text class="name">{{talentData[0].user_name}}</b-card-text>
-                  <b-card-text class="job">{{talentData[0].profile[0].profile_job}}</b-card-text>
-                  <b-card-text class="location">{{talentData[0].profile[0].job_address}}</b-card-text>
-                  <b-card-text class="role">{{talentData[0].profile[0].job_type}}</b-card-text>
+                  <b-card-text class="name">{{
+                    talentData[0].user_name
+                  }}</b-card-text>
+                  <b-card-text class="job">{{
+                    talentData[0].profile[0].profile_job
+                  }}</b-card-text>
+                  <b-card-text class="location">{{
+                    talentData[0].profile[0].job_address
+                  }}</b-card-text>
+                  <b-card-text class="role">{{
+                    talentData[0].profile[0].job_type
+                  }}</b-card-text>
                 </div>
               </b-card>
             </b-col>
             <b-col md="12" sm="12" class="b-button-container">
-              <b-button block size="md" class="b-button-save" @click="onSave()">Simpan</b-button>
+              <b-button block size="md" class="b-button-save" @click="onSave()"
+                >Simpan</b-button
+              >
             </b-col>
             <b-col md="12" sm="12" class="b-button-container">
               <router-link to="/profile">
-                <b-button block size="md" class="b-button-cancel">Batal</b-button>
+                <b-button block size="md" class="b-button-cancel"
+                  >Batal</b-button
+                >
               </router-link>
             </b-col>
           </b-row>
@@ -48,47 +66,90 @@
                     <b-row class="component-form">
                       <b-col class="text-left">
                         <label for="name" class="l-label">Nama Lengkap</label>
-                        <b-input type="text" v-model="formProfile.user_name" id="name" placeholder="Masukan nama lengkap" required></b-input>
+                        <b-input
+                          type="text"
+                          v-model="formProfile.user_name"
+                          id="name"
+                          placeholder="Masukan nama lengkap"
+                          required
+                        ></b-input>
                       </b-col>
                     </b-row>
                     <b-row class="component-form">
                       <b-col class="text-left">
                         <label for="job" class="l-label">Job Desk</label>
-                        <b-input type="text" v-model="formProfile.profile_job" id="job" placeholder="Masukan job desk" required></b-input>
+                        <b-input
+                          type="text"
+                          v-model="formProfile.profile_job"
+                          id="job"
+                          placeholder="Masukan job desk"
+                          required
+                        ></b-input>
                       </b-col>
                     </b-row>
                     <b-row class="component-form">
                       <b-col class="text-left">
-                        <b-form-radio-group v-model="formProfile.job_type" :options="options" plain name="type"></b-form-radio-group>
+                        <b-form-radio-group
+                          v-model="formProfile.job_type"
+                          :options="options"
+                          plain
+                          name="type"
+                        ></b-form-radio-group>
                       </b-col>
                     </b-row>
                     <b-row class="component-form">
                       <b-col class="text-left">
                         <label for="domisili" class="l-label">Domisili</label>
-                        <b-input type="text" v-model="formProfile.profile_address" id="domisili" placeholder="Masukan domisili" required></b-input>
+                        <b-input
+                          type="text"
+                          v-model="formProfile.profile_address"
+                          id="domisili"
+                          placeholder="Masukan domisili"
+                          required
+                        ></b-input>
                       </b-col>
                     </b-row>
                     <b-row class="component-form">
                       <b-col class="text-left">
                         <label for="place" class="l-label">Tempat Kerja</label>
-                        <b-input type="text" v-model="formProfile.job_address" id="place" placeholder="Masukan tempat kerja" required></b-input>
+                        <b-input
+                          type="text"
+                          v-model="formProfile.job_address"
+                          id="place"
+                          placeholder="Masukan tempat kerja"
+                          required
+                        ></b-input>
                       </b-col>
                     </b-row>
                     <b-row class="component-form">
                       <b-col class="text-left">
                         <label for="place" class="l-label">Instagram</label>
-                        <b-input type="text" v-model="formProfile.profile_instagram" id="instagram" placeholder="Masukan akun Instagram" required></b-input>
+                        <b-input
+                          type="text"
+                          v-model="formProfile.profile_instagram"
+                          id="instagram"
+                          placeholder="Masukan akun Instagram"
+                          required
+                        ></b-input>
                       </b-col>
                     </b-row>
                     <b-row class="component-form">
                       <b-col class="text-left">
                         <label for="place" class="l-label">Git</label>
-                        <b-input type="text" v-model="formProfile.profile_git" id="Git" placeholder="Masukan akun Git" required></b-input>
+                        <b-input
+                          type="text"
+                          v-model="formProfile.profile_git"
+                          id="Git"
+                          placeholder="Masukan akun Git"
+                          required
+                        ></b-input>
                       </b-col>
                     </b-row>
                     <b-row class="component-form">
                       <b-col class="text-left">
-                        <label for="description" class="l-label">Deskripsi Singkat</label>
+                        <label for="description" class="l-label"
+                          >Deskripsi Singkat</label
+                        >
                         <b-form-textarea
                           type="text"
                           v-model="formProfile.profile_desc"
@@ -250,7 +311,11 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['patchProfileImageTalent', 'getTalentDataById', 'patchProfileTalent']),
+    ...mapActions([
+      'patchProfileImageTalent',
+      'getTalentDataById',
+      'patchProfileTalent'
+    ]),
     upFile(event) {
       this.form.profile_img = event.target.files[0]
       const data = new FormData()
@@ -259,26 +324,40 @@ export default {
         id: this.talentData[0].profile[0].profile_id,
         form: data
       }
-      this.patchProfileImageTalent(payload).then(result => {
-        this.talentData = {}
-        this.form = {}
-        this.getTalentDataById(this.user.user_id)
-      }).catch(error => {
-        console.log(error)
-      })
+      this.patchProfileImageTalent(payload)
+        .then((result) => {
+          this.talentData = {}
+          this.form = {}
+          this.getTalentDataById(this.user.user_id)
+        })
+        .catch((error) => {
+          console.log(error)
+        })
     },
     onSave() {
       const payload = {
         id: this.talentData[0].profile[0].profile_id,
         form: this.formProfile
       }
-      this.patchProfileTalent(payload).then(result => {
+      this.patchProfileTalent(payload).then((result) => {
         this.talentData = {}
         this.getTalentDataById(this.user.user_id)
+      })
+    },
+    makeToast(msg, title, variant) {
+      this.$bvToast.toast(msg, {
+        title: title,
+        variant: variant,
+        solid: true
       })
     }
   },
   created() {
+    this.getTalentDataById(this.user.user_id).then((response) => {
+      if (!response.data[0].profile[0].profile_address) {
+        this.makeToast('Please update your profile first', 'Error', 'danger')
+      }
+    })
     this.formProfile = {
       user_id: this.talentData[0].user_id,
       user_name: this.talentData[0].user_name,
