@@ -51,6 +51,21 @@
     padding: 1em 3em;
   }
 }
+
+@media screen and (max-width: 425px) {
+  .navbar-nav {
+    display: block;
+  }
+
+  .navbar-brand img {
+    max-width: 100px;
+    max-height: 30px;
+  }
+
+  .b-button-login {
+    margin-right: 5px;
+  }
+}
 </style>
 
 <script>

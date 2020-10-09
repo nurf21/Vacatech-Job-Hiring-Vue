@@ -89,6 +89,12 @@
     line-height: 1rem;
   }
 }
+
+@media screen and (max-width: 425px) {
+  .page-index {
+    display: none;
+  }
+}
 </style>
 
 <script>
