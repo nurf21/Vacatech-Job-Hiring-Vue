@@ -43,6 +43,7 @@
   justify-content: center;
   padding: 20px;
 }
+
 .page-index {
   margin-left: 10px;
   width: 15px;
@@ -51,6 +52,7 @@
   background: #5e50a1;
   box-shadow: 0px 8px 16px rgba(204, 204, 204, 0.75);
 }
+
 .active {
   width: 20px;
   height: 20px;
@@ -65,19 +67,27 @@
 }
 
 .card-role {
-  font-style: normal;
-  font-weight: normal;
   font-size: 1.125rem;
   line-height: 1.75rem;
   color: #9ea0a5;
 }
 
 .card-comment {
-  font-style: normal;
-  font-weight: normal;
   font-size: 1.125rem;
   line-height: 1.75rem;
   color: #46505c;
+}
+
+@media screen and (max-width: 768px){
+  .card-title {
+    font-size: 1rem;
+    line-height: 3rem;
+  }
+
+  .card-role, .card-comment {
+    font-size: 1rem;
+    line-height: 1rem;
+  }
 }
 </style>
 

@@ -59,6 +59,29 @@
   left: 150px;
   top: 2041px;
 }
+
+@media screen and (max-width: 768px){
+  .footer {
+    padding: 4em 4em 2em 4em;
+  }
+
+  .col-md-5 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .row .description {
+    padding: 3em 0em 2em 0em;
+  }
+
+  .offset-md-3 {
+    margin-left: 20%;
+  }
+
+  .contact p {
+    font-size: 14px;
+  }
+}
 </style>
 
 <script>
