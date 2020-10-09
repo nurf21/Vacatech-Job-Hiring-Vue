@@ -3,9 +3,7 @@
     <b-row>
       <b-col class="text-left">
         <h3>Halo, Vacafriends</h3>
-        <p>
-          Solusi tepat untuk mencari talent terbaik.
-        </p>
+        <p>Solusi tepat untuk mencari talent terbaik.</p>
       </b-col>
     </b-row>
     <b-row class="login-form">
@@ -104,7 +102,7 @@
               <b-button
                 type="submit"
                 block
-                style="background-color: #FBB017; border-color: transparent;"
+                style="background-color: #fbb017; border-color: transparent"
                 >Daftar</b-button
               >
             </b-col>
@@ -117,7 +115,7 @@
         <p>
           Anda sudah punya akun?
           <router-link to="/login">
-            <span style="color: #FBB017">Masuk disini</span>
+            <span style="color: #fbb017">Masuk disini</span>
           </router-link>
         </p>
       </b-col>
@@ -160,24 +158,32 @@ export default {
         role: 'recruiter'
       }
       this.register(payload)
-        .then(result => {
+        .then((result) => {
           const activate = {
             user_email: this.form.user_email
           }
           this.activateEmail(activate)
-            .then(result => {
+            .then((result) => {
               this.isError = false
               this.isSuccess = true
             })
-            .catch(error => {
+            .catch((error) => {
               this.isError = true
               this.error = error.data.msg
             })
         })
-        .catch(error => {
+        .catch((error) => {
           this.isError = true
           this.error = error.data.msg
+          this.makeToast(this.error, 'Error', 'danger')
         })
+    },
+    makeToast(msg, title, variant) {
+      this.$bvToast.toast(msg, {
+        title: title,
+        variant: variant,
+        solid: true
+      })
     }
   }
 }

@@ -46,8 +46,9 @@
               <b-button
                 type="submit"
                 block
-                style="background-color: #FBB017; border-color: transparent;"
-              >Login</b-button>
+                style="background-color: #fbb017; border-color: transparent"
+                >Login</b-button
+              >
             </b-col>
           </b-row>
         </b-form>
@@ -57,14 +58,21 @@
       <b-col class="text-center">
         <p>
           Anda belum punya akun?
-          <span
-            style="color: #FBB017;cursor:pointer"
-            id="popover-target-1"
-          >Daftar disini</span>
-          <b-popover target="popover-target-1" triggers="hover" placement="bottom">
-            <router-link to="/register/worker">Daftar sebagai pekerja ></router-link>
+          <span style="color: #fbb017; cursor: pointer" id="popover-target-1"
+            >Daftar disini</span
+          >
+          <b-popover
+            target="popover-target-1"
+            triggers="hover"
+            placement="bottom"
+          >
+            <router-link to="/register/worker"
+              >Daftar sebagai pekerja ></router-link
+            >
             <br />
-            <router-link to="/register/recruiter">Daftar sebagai perekrut ></router-link>
+            <router-link to="/register/recruiter"
+              >Daftar sebagai perekrut ></router-link
+            >
           </b-popover>
         </p>
       </b-col>
@@ -115,7 +123,15 @@ export default {
         .catch((error) => {
           this.isError = true
           this.error = error.data.msg
+          this.makeToast(this.error, 'Error', 'danger')
         })
+    },
+    makeToast(msg, title, variant) {
+      this.$bvToast.toast(msg, {
+        title: title,
+        variant: variant,
+        solid: true
+      })
     }
   }
 }
