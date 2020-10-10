@@ -10,7 +10,7 @@
     </b-navbar-brand>
     <b-navbar-nav class="ml-auto nav-item">
       <b-nav-item>
-        <b-row>
+        <b-row class="iconic">
           <b-col>
             <b-img :src="require('../../assets/icon/bell.png')" id="popover-target-1"></b-img>
             <b-popover target="popover-target-1" triggers="hover" placement="bottom">
@@ -71,6 +71,17 @@
 .logout {
   cursor: pointer;
 }
+
+@media screen and (max-width: 768px) {
+
+.nav-container .iconic{
+  display: flex;
+  flex-direction: column;
+}
+.nav-container .iconic img {
+  margin-top: 5px;
+}
+}
 </style>
 
 <script>
@@ -96,8 +107,8 @@ export default {
     confirmLogout() {
       this.$bvModal
         .msgBoxConfirm('Are you sure want to logout?', {
-          cancelVariant: 'danger',
-          okVariant: 'success',
+          cancelVariant: 'light',
+          okVariant: 'info',
           headerClass: 'p-2 border-bottom-0',
           footerClass: 'p-2 border-top-0',
           centered: true

@@ -1,9 +1,9 @@
 <template>
-  <b-row class="contact" cols="4">
+  <b-row class="contact" cols="12">
     <b-col md="12" sm="12" class="text-center title">
       <h1>Social Media</h1>
     </b-col>
-    <b-col>
+    <b-col >
       <b-row class="justify-content-center">
         <b-col class="text-center">
           <b-img :src="require('../../../assets/icon/mail.png')"></b-img>
@@ -58,6 +58,13 @@
   font-size: 14px;
   line-height: 20px;
   color: #9ea0a5;
+}
+
+@media screen and (max-width: 767px) {
+  .contact {
+    display: flex;
+    flex-direction: column;
+  }
 }
 </style>
 

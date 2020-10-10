@@ -4,7 +4,7 @@
 
     <div class="content">
       <b-row class="main-content">
-        <b-col class="main-profile" md="4">
+        <b-col class="main-profile" md="4" xs="12">
           <b-row>
             <b-col md="12">
               <b-card border-variant="white" class="text-center">
@@ -35,7 +35,7 @@
             </b-col>
           </b-row>
         </b-col>
-        <b-col class="edit-profile" md="8">
+        <b-col class="edit-profile" md="8" xs="12">
           <b-row class="f-form">
             <b-col md="12">
               <b-card border-variant="white" class="text-center">
@@ -220,6 +220,89 @@
   line-height: 16px;
   color: #9ea0a5;
 }
+
+@media screen and (max-width: 768px) {
+
+.main-content {
+  margin: 1em -6em;
+}
+
+.content .text-left .name {
+  text-align: center !important;
+}
+.content .text-left .job {
+  text-align: center !important;
+}
+.content .text-left .location {
+  text-align: center !important;
+}
+.main-profile .b-button-container .b-button-save {
+  margin: 1em 0em;
+  border: transparent;
+  background-color: #5e50a1;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 20px;
+  color: #ffffff;
+}
+
+.main-profile .b-button-container .b-button-cancel {
+  margin-bottom: 15px;
+  border: 1px solid #5e50a1;
+  background-color: white;
+  color: #5e50a1;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 20px;
+}
+}
+
+/* @media (min-width: 506px) and (max-width: 700px) {
+
+.main-content {
+  margin: 10em -5em;
+  width: 520px;
+}
+.content .edit-profile{
+  margin-top: 10px;
+}
+
+.content .text-left .name {
+  text-align: center !important;
+}
+.content .text-left .job {
+  text-align: center !important;
+}
+.content .text-left .location {
+  text-align: center !important;
+}
+.main-profile .b-button-container .b-button-save {
+  margin: 1em 1em;
+  width: 460px;
+  border: transparent;
+  background-color: #5e50a1;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 20px;
+  color: #ffffff;
+}
+
+.main-profile .b-button-container .b-button-cancel {
+  margin: 0em 1em;
+  width: 460px;
+  border: 1px solid #5e50a1;
+  background-color: white;
+  color: #5e50a1;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 20px;
+}
+} */
+
 </style>
 
 <script>
@@ -254,8 +337,10 @@ export default {
       this.patchProfileImageCompany(payload).then(result => {
         this.profile = {}
         this.form = {}
+        this.makeToast('Profile image updated', 'Success', 'success')
         this.getProfileDataCompany(this.user.user_id)
       }).catch(error => {
+        this.makeToast(error.data.msg, 'Error', 'danger')
         console.log(error)
       })
     },
@@ -266,7 +351,15 @@ export default {
       }
       this.patchProfileCompany(payload).then(result => {
         this.profile = {}
+        this.makeToast('Profile updated', 'Success', 'success')
         this.getProfileDataCompany(this.user.user_id)
+      })
+    },
+    makeToast(msg, title, variant) {
+      this.$bvToast.toast(msg, {
+        title: title,
+        variant: variant,
+        solid: true
       })
     }
   },

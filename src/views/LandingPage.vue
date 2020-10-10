@@ -292,6 +292,12 @@
   display: none;
 }
 
+img {
+  transition: transform 0.5s ease-in-out;
+}
+img:hover {
+  transform: scale(1.1);
+}
 @media screen and (max-width: 768px) {
   .main-content-1, .main-content-2, .main-content-3 {
     padding: 4em;

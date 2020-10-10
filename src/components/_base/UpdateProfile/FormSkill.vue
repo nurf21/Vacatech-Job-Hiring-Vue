@@ -107,6 +107,12 @@
   border: 1px solid #fbb017;
   margin: 0.2em 0.2em;
 }
+
+@media screen and (max-width: 767px) {
+.b-button-save {
+  margin-top: 10px;
+}
+}
 </style>
 
 <script>

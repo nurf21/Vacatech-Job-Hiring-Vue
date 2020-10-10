@@ -56,6 +56,22 @@
   line-height: 20px;
   color: #9ea0a5;
 }
+
+@media screen and (max-width: 768px) {
+  .contact {
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+  }
+  .contact p {
+  margin: 1em -3em;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+  color: #9ea0a5;
+}
+}
 </style>
 
 <script>

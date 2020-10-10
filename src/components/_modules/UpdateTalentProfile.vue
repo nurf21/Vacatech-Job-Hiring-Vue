@@ -279,6 +279,47 @@
   line-height: 16px;
   color: #9ea0a5;
 }
+
+@media screen and (max-width: 768px) {
+
+.main-content {
+  margin: 1em -6em;
+}
+
+.content .text-left .name {
+  text-align: center !important;
+}
+.content .text-left .job {
+  text-align: center !important;
+}
+.content .text-left .location {
+  text-align: center !important;
+}
+.content .text-left .role {
+  text-align: center !important;
+}
+.main-profile .b-button-container .b-button-save {
+  margin: 1em 0em;
+  border: transparent;
+  background-color: #5e50a1;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 20px;
+  color: #ffffff;
+}
+
+.main-profile .b-button-container .b-button-cancel {
+  margin-bottom: 15px;
+  border: 1px solid #5e50a1;
+  background-color: white;
+  color: #5e50a1;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 20px;
+}
+}
 </style>
 
 <script>
