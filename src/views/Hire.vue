@@ -1,9 +1,11 @@
 <template>
   <div style="width:100%; background-color: #E5E5E5;">
-    <Header class="py-3" :img="profile[0].profile_img"/>
-    <div class="page-container">
-      <div class="profile-info">
-        <div class="image"><b-img :src="url + '/' + talentData[0].profile[0].profile_img" class="image"></b-img></div>
+    <Header class="py-3" :img="profile[0].profile_img" />
+    <b-row class="page-container">
+      <b-col md="4" sm="12" class="profile-info">
+        <div class="image">
+          <b-img :src="url + '/' + talentData[0].profile[0].profile_img" class="image"></b-img>
+        </div>
         <div style="padding:0 30px">
           <h4>{{talentData[0].user_name}}</h4>
           <p>{{talentData[0].profile[0].profile_job}}</p>
@@ -11,11 +13,15 @@
           <p style="color: #9EA0A5;">{{talentData[0].profile[0].profile_desc}}</p>
           <h4>Skill</h4>
           <div class="skills">
-            <div class="skill" v-for="(value, index) in talentData[0].skill" :key="index">{{value.skill_name}}</div>
+            <div
+              class="skill"
+              v-for="(value, index) in talentData[0].skill"
+              :key="index"
+            >{{value.skill_name}}</div>
           </div>
         </div>
-      </div>
-      <div class="hire-info">
+      </b-col>
+      <b-col md="6" sm="12" class="hire-info">
         <h2>Hubungi {{talentData[0].user_name}}</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.</p>
         <br />
@@ -39,8 +45,8 @@
             <b-button block class="mt-5 btn-hire" type="submit">Hire</b-button>
           </b-form>
         </div>
-      </div>
-    </div>
+      </b-col>
+    </b-row>
     <Footer />
   </div>
 </template>
@@ -89,10 +95,10 @@ export default {
   color: #111;
 }
 .page-container {
-  display: grid;
+  /* display: grid; */
   margin: 70px auto;
   width: 85%;
-  grid-template-columns: 1fr 1fr;
+  /* grid-template-columns: 1fr 1fr; */
 }
 .profile-info {
   width: 400px;
@@ -115,7 +121,7 @@ export default {
 .skills {
   margin: 20px 0;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  /* grid-template-columns: 1fr 1fr 1fr; */
   gap: 5px;
   width: 300px;
 }
@@ -128,17 +134,172 @@ export default {
   color: white;
   margin: 0 5px 5px 0px;
 }
-@media (max-width: 700px) {
+@media screen and (max-width: 375px) {
   .page-container {
-    grid-template-columns: 1fr;
+    /* display: grid; */
+    margin: 70px auto;
+    width: 85%;
+    /* grid-template-columns: 1fr 1fr; */
   }
   .profile-info {
-    width: 375px;
+    width: 270px;
+    height: 700px;
+    border-radius: 8px;
+    background-color: white;
+    text-align: center;
   }
   .hire-info {
     margin-top: 50px;
     width: 375px;
     margin-bottom: -250px;
+  }
+  .skills {
+    margin: 20px 0;
+    display: grid;
+    /* grid-template-columns: 1fr 1fr 1fr; */
+    gap: 5px;
+    width: 200px;
+  }
+  .skill {
+    background: rgba(251, 176, 23, 0.6);
+    border: 1px solid #fbb017;
+    border-radius: 4px;
+    text-align: center;
+    padding: 3px 15px;
+    color: white;
+    margin: 0 5px 5px 0px;
+  }
+}
+
+@media (min-width: 376px) and (max-width: 425px) {
+  .profile-info {
+    width: 350px;
+    height: 700px;
+    border-radius: 8px;
+    /* margin-right: 20px; */
+    background-color: white;
+    text-align: center;
+  }
+  .hire-info {
+    margin-top: 50px;
+    width: 400px;
+    height: 1000px;
+    border-radius: 8px;
+  }
+  .skills {
+    margin: 20px 0;
+    display: grid;
+    /* grid-template-columns: 1fr 1fr 1fr; */
+    gap: 5px;
+    width: 270px;
+  }
+  .skill {
+    background: rgba(251, 176, 23, 0.6);
+    border: 1px solid #fbb017;
+    border-radius: 4px;
+    text-align: center;
+    padding: 3px 15px;
+    color: white;
+    margin: 0 5px 5px 0px;
+  }
+}
+
+@media (min-width: 426px) and (max-width: 768px) {
+  .profile-info {
+    width: 500px;
+    height: 700px;
+    border-radius: 8px;
+    /* margin-right: 20px; */
+    background-color: white;
+    text-align: center;
+  }
+  .hire-info {
+    margin: 20px auto;
+    width: 400px;
+    height: 1000px;
+    border-radius: 8px;
+  }
+  .skills {
+    margin: 20px 0;
+    display: grid;
+    /* grid-template-columns: 1fr 1fr 1fr; */
+    gap: 5px;
+    width: auto;
+  }
+  .skill {
+    background: rgba(251, 176, 23, 0.6);
+    border: 1px solid #fbb017;
+    border-radius: 4px;
+    text-align: center;
+    padding: 3px 15px;
+    color: white;
+    margin: 0 5px 5px 0px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .profile-info {
+    width: 500px;
+    height: 700px;
+    border-radius: 8px;
+    /* margin-right: 20px; */
+    background-color: white;
+    text-align: center;
+  }
+  .hire-info {
+    margin-left: auto;
+    width: 400px;
+    height: 1000px;
+    border-radius: 8px;
+  }
+  .skills {
+    margin: 20px 0;
+    display: grid;
+    /* grid-template-columns: 1fr 1fr 1fr; */
+    gap: 5px;
+    width: auto;
+  }
+  .skill {
+    background: rgba(251, 176, 23, 0.6);
+    border: 1px solid #fbb017;
+    border-radius: 4px;
+    text-align: center;
+    padding: 3px 15px;
+    color: white;
+    margin: 0 5px 5px 0px;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .profile-info {
+    width: 500px;
+    height: 700px;
+    border-radius: 8px;
+    /* margin-right: 20px; */
+    background-color: white;
+    text-align: center;
+  }
+  .hire-info {
+    margin-left: auto;
+    width: 400px;
+    height: 1000px;
+    border-radius: 8px;
+  }
+  .skills {
+    margin: 20px 0;
+    display: grid;
+    /* grid-template-columns: 1fr 1fr 1fr; */
+    gap: 5px;
+    width: auto;
+  }
+  .skill {
+    background: rgba(251, 176, 23, 0.6);
+    border: 1px solid #fbb017;
+    border-radius: 4px;
+    text-align: center;
+    padding: 3px 15px;
+    color: white;
+    margin: 0 5px 5px 0px;
   }
 }
 </style>

@@ -78,7 +78,7 @@
 @media screen and (max-width: 768px) {
   .nav-container .iconic {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
   }
   .nav-container .iconic img {
     margin-top: 5px;
