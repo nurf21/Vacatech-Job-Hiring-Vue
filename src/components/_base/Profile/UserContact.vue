@@ -3,7 +3,7 @@
     <b-col md="12" sm="12" class="text-center title">
       <h1>Social Media</h1>
     </b-col>
-    <b-col >
+    <b-col>
       <b-row class="justify-content-center">
         <b-col class="text-center">
           <b-img :src="require('../../../assets/icon/mail.png')"></b-img>
@@ -61,6 +61,14 @@
 }
 
 @media screen and (max-width: 767px) {
+  .contact h1 {
+    margin-top: -25px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 21px;
+    line-height: 56px;
+    color: #1f2a36;
+  }
   .contact {
     display: flex;
     flex-direction: column;

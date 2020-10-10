@@ -37,7 +37,7 @@
 
 <style scoped>
 .contact {
-  padding: 2.75em 0em;
+  margin: 2em -8em;
 }
 
 .contact h1 {
@@ -60,17 +60,17 @@
 @media screen and (max-width: 768px) {
   .contact {
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
     align-items: center;
   }
   .contact p {
-  margin: 1em -3em;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 20px;
-  color: #9ea0a5;
-}
+    margin: 1em -3em;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    color: #9ea0a5;
+  }
 }
 </style>
 

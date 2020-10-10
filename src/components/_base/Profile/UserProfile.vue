@@ -17,15 +17,10 @@
           <h1>{{ talentData[0].user_name }}</h1>
         </b-col>
         <b-col md="12" sm="12" class="text-center role">
-          <p v-if="talentData[0].profile[0].profile_job">
-            {{ talentData[0].profile[0].profile_job }}
-          </p>
+          <p v-if="talentData[0].profile[0].profile_job">{{ talentData[0].profile[0].profile_job }}</p>
         </b-col>
         <b-col md="12" sm="12" class="text-center location">
-          <b-row
-            class="justify-content-center"
-            v-if="talentData[0].profile[0].job_address"
-          >
+          <b-row class="justify-content-center" v-if="talentData[0].profile[0].job_address">
             <b-col md="auto" style="padding: 0" class="mr-1">
               <b-img :src="require('../../../assets/icon/pin.png')"></b-img>
             </b-col>
@@ -98,6 +93,17 @@
 .main-profile .hire .b-button-hire {
   color: white;
   background-color: #5e50a1;
+}
+
+@media screen and (max-width: 767px) {
+  .main-profile .location p {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px !important;
+    line-height: 20px;
+    color: red;
+    margin: 0;
+  }
 }
 </style>
 

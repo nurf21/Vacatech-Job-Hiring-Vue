@@ -89,6 +89,16 @@
   color: white;
   background-color: #5e50a1;
 }
+
+@media screen and (max-width: 767px) {
+  .main-profile .location p {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+
+    margin-left: 15px;
+  }
+}
 </style>
 
 <script>

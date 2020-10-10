@@ -10,8 +10,7 @@
         class="b-button-skill"
         v-for="(item, index) in talentData[0].skill"
         :key="index"
-        >{{ item.skill_name }}</b-button
-      >
+      >{{ item.skill_name }}</b-button>
     </b-col>
   </b-row>
 </template>
@@ -34,6 +33,12 @@
   background-color: #fdd074;
   border: 1px solid #fbb017;
   margin: 0em 0.5em;
+}
+
+@media screen and (max-width: 767px) {
+  .skills .skill .b-button-skill {
+    margin: 5px;
+  }
 }
 </style>
 

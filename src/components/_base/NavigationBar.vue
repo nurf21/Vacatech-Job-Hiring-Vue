@@ -16,7 +16,10 @@
             <b-popover target="popover-target-1" triggers="hover" placement="bottom">
               <b-img :src="require('../../assets/img/notif0.png')" v-show="!isNotif"></b-img>
               <div class="notification" v-for="(value, index) in notif" :key="index">
-                <p>{{ value.notif }} (<span>{{value.notif_created_at.split('T').join(', ').slice(0, 17)}}</span>)</p>
+                <p>
+                  {{ value.notif }} (
+                  <span>{{value.notif_created_at.split('T').join(', ').slice(0, 17)}}</span>)
+                </p>
               </div>
             </b-popover>
           </b-col>
@@ -56,7 +59,7 @@
 
 <style scoped>
 .nav-container {
-  padding: 2em 7em;
+  padding: 2em 2em;
   box-shadow: 0px 10px 50px rgba(132, 132, 132, 0.25);
   background-color: white;
   width: 100%;
@@ -73,14 +76,13 @@
 }
 
 @media screen and (max-width: 768px) {
-
-.nav-container .iconic{
-  display: flex;
-  flex-direction: column;
-}
-.nav-container .iconic img {
-  margin-top: 5px;
-}
+  .nav-container .iconic {
+    display: flex;
+    flex-direction: column;
+  }
+  .nav-container .iconic img {
+    margin-top: 5px;
+  }
 }
 </style>
 
@@ -125,12 +127,14 @@ export default {
     ...mapGetters({ user: 'getUser', notif: 'getNotif' })
   },
   created() {
-    this.handleNotif(this.user.user_id).then(result => {
-      this.isNotif = true
-    }).catch(error => {
-      this.isNotif = false
-      console.log(error)
-    })
+    this.handleNotif(this.user.user_id)
+      .then(result => {
+        this.isNotif = true
+      })
+      .catch(error => {
+        this.isNotif = false
+        console.log(error)
+      })
   }
 }
 </script>
