@@ -99,10 +99,9 @@
   .main-profile .location p {
     font-style: normal;
     font-weight: normal;
-    font-size: 10px !important;
-    line-height: 20px;
-    color: red;
-    margin: 0;
+    font-size: 14px;
+
+    margin-left: 15px;
   }
 }
 </style>
