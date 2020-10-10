@@ -9,9 +9,13 @@
     <b-row class="login-form">
       <b-col>
         <b-alert show variant="danger" v-show="isError">{{ error }}</b-alert>
-        <b-alert show variant="success" v-show="isSuccess"
-          >Activation link has been sent to your email.</b-alert
-        >
+        <b-alert show variant="success" v-show="isSuccess">
+          Klik
+          <router-link to="/login">
+            <span>disini</span>
+          </router-link>
+          untuk login
+        </b-alert>
         <b-form @submit.prevent="onSubmit" v-show="!isSuccess">
           <b-row class="component-form">
             <b-col class="text-left">

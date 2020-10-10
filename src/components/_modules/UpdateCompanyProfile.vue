@@ -11,26 +11,42 @@
                 <b-img
                   :src="url + '/' + profile[0].profile_img"
                   rounded="circle"
-                  style="width: 150px; height: 150px; object-fit: cover;"
+                  style="width: 150px; height: 150px; object-fit: cover"
                 ></b-img>
                 <div class="edit-icon">
-                  <input type="file" ref="file" @change="upFile" style="display: none">
-                  <p @click="$refs.file.click()" style="cursor: pointer;">Edit <b-icon icon="pencil-fill"></b-icon>
+                  <input
+                    type="file"
+                    ref="file"
+                    @change="upFile"
+                    style="display: none"
+                  />
+                  <p @click="$refs.file.click()" style="cursor: pointer">
+                    Edit <b-icon icon="pencil-fill"></b-icon>
                   </p>
                 </div>
                 <div class="text-left">
-                  <b-card-text class="name">{{user.company_name}}</b-card-text>
-                  <b-card-text class="job">{{profile[0].profile_field}}</b-card-text>
-                  <b-card-text class="location">{{profile[0].profile_city}}</b-card-text>
+                  <b-card-text class="name">{{
+                    user.company_name
+                  }}</b-card-text>
+                  <b-card-text class="job">{{
+                    profile[0].profile_field
+                  }}</b-card-text>
+                  <b-card-text class="location">{{
+                    profile[0].profile_city
+                  }}</b-card-text>
                 </div>
               </b-card>
             </b-col>
             <b-col md="12" sm="12" class="b-button-container">
-              <b-button block size="md" class="b-button-save" @click="onSave()">Simpan</b-button>
+              <b-button block size="md" class="b-button-save" @click="onSave()"
+                >Simpan</b-button
+              >
             </b-col>
             <b-col md="12" sm="12" class="b-button-container">
               <router-link to="/profile/company">
-                <b-button block size="md" class="b-button-cancel">Batal</b-button>
+                <b-button block size="md" class="b-button-cancel"
+                  >Batal</b-button
+                >
               </router-link>
             </b-col>
           </b-row>
@@ -46,8 +62,16 @@
                   <b-form>
                     <b-row class="component-form">
                       <b-col class="text-left">
-                        <label for="name" class="l-label">Nama Perusahaan</label>
-                        <b-input type="text" v-model="formProfile.company_name" id="name" placeholder="Masukan nama perusahaan" required></b-input>
+                        <label for="name" class="l-label"
+                          >Nama Perusahaan</label
+                        >
+                        <b-input
+                          type="text"
+                          v-model="formProfile.company_name"
+                          id="name"
+                          placeholder="Masukan nama perusahaan"
+                          required
+                        ></b-input>
                       </b-col>
                     </b-row>
                     <b-row class="component-form">
@@ -65,12 +89,20 @@
                     <b-row class="component-form">
                       <b-col class="text-left">
                         <label for="city" class="l-label">Kota</label>
-                        <b-input type="text" v-model="formProfile.profile_city" id="city" placeholder="Masukan kata" required></b-input>
+                        <b-input
+                          type="text"
+                          v-model="formProfile.profile_city"
+                          id="city"
+                          placeholder="Masukan kata"
+                          required
+                        ></b-input>
                       </b-col>
                     </b-row>
                     <b-row class="component-form">
                       <b-col class="text-left">
-                        <label for="description" class="l-label">Deskripsi Singkat</label>
+                        <label for="description" class="l-label"
+                          >Deskripsi Singkat</label
+                        >
                         <b-form-textarea
                           type="text"
                           v-model="formProfile.profile_desc"
@@ -84,25 +116,49 @@
                     <b-row class="component-form">
                       <b-col class="text-left">
                         <label for="email" class="l-label">Email</label>
-                        <b-input type="text" v-model="formProfile.profile_email" id="email" placeholder="Masukan email" required></b-input>
+                        <b-input
+                          type="text"
+                          v-model="formProfile.profile_email"
+                          id="email"
+                          placeholder="Masukan email"
+                          required
+                        ></b-input>
                       </b-col>
                     </b-row>
                     <b-row class="component-form">
                       <b-col class="text-left">
                         <label for="instagram" class="l-label">Instagram</label>
-                        <b-input type="text" v-model="formProfile.profile_instagram" id="instagram" placeholder="Masukan nama instagram" required></b-input>
+                        <b-input
+                          type="text"
+                          v-model="formProfile.profile_instagram"
+                          id="instagram"
+                          placeholder="Masukan nama instagram"
+                          required
+                        ></b-input>
                       </b-col>
                     </b-row>
                     <b-row class="component-form">
                       <b-col class="text-left">
                         <label for="phone" class="l-label">Nomor Telepon</label>
-                        <b-input type="text" v-model="formProfile.user_phone" id="phone" placeholder="Masukan nomor telepon" required></b-input>
+                        <b-input
+                          type="text"
+                          v-model="formProfile.user_phone"
+                          id="phone"
+                          placeholder="Masukan nomor telepon"
+                          required
+                        ></b-input>
                       </b-col>
                     </b-row>
                     <b-row class="component-form">
                       <b-col class="text-left">
                         <label for="linkedin" class="l-label">Linkedin</label>
-                        <b-input type="text" v-model="formProfile.profile_linkedin" id="linkedin" placeholder="Masukan nama Linkedin" required></b-input>
+                        <b-input
+                          type="text"
+                          v-model="formProfile.profile_linkedin"
+                          id="linkedin"
+                          placeholder="Masukan nama Linkedin"
+                          required
+                        ></b-input>
                       </b-col>
                     </b-row>
                   </b-form>
@@ -222,41 +278,40 @@
 }
 
 @media screen and (max-width: 768px) {
+  .main-content {
+    margin: 1em -6em;
+  }
 
-.main-content {
-  margin: 1em -6em;
-}
+  .content .text-left .name {
+    text-align: center !important;
+  }
+  .content .text-left .job {
+    text-align: center !important;
+  }
+  .content .text-left .location {
+    text-align: center !important;
+  }
+  .main-profile .b-button-container .b-button-save {
+    margin: 1em 0em;
+    border: transparent;
+    background-color: #5e50a1;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 20px;
+    color: #ffffff;
+  }
 
-.content .text-left .name {
-  text-align: center !important;
-}
-.content .text-left .job {
-  text-align: center !important;
-}
-.content .text-left .location {
-  text-align: center !important;
-}
-.main-profile .b-button-container .b-button-save {
-  margin: 1em 0em;
-  border: transparent;
-  background-color: #5e50a1;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 16px;
-  line-height: 20px;
-  color: #ffffff;
-}
-
-.main-profile .b-button-container .b-button-cancel {
-  margin-bottom: 15px;
-  border: 1px solid #5e50a1;
-  background-color: white;
-  color: #5e50a1;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 16px;
-  line-height: 20px;
-}
+  .main-profile .b-button-container .b-button-cancel {
+    margin-bottom: 15px;
+    border: 1px solid #5e50a1;
+    background-color: white;
+    color: #5e50a1;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 20px;
+  }
 }
 
 /* @media (min-width: 506px) and (max-width: 700px) {
@@ -302,7 +357,6 @@
   line-height: 20px;
 }
 } */
-
 </style>
 
 <script>
@@ -324,7 +378,11 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['patchProfileImageCompany', 'getProfileDataCompany', 'patchProfileCompany']),
+    ...mapActions([
+      'patchProfileImageCompany',
+      'getProfileDataCompany',
+      'patchProfileCompany'
+    ]),
     upFile(event) {
       this.form.profile_img = event.target.files[0]
       const data = new FormData()
@@ -334,22 +392,23 @@ export default {
         id: this.profile[0].profile_id,
         form: data
       }
-      this.patchProfileImageCompany(payload).then(result => {
-        this.profile = {}
-        this.form = {}
-        this.makeToast('Profile image updated', 'Success', 'success')
-        this.getProfileDataCompany(this.user.user_id)
-      }).catch(error => {
-        this.makeToast(error.data.msg, 'Error', 'danger')
-        console.log(error)
-      })
+      this.patchProfileImageCompany(payload)
+        .then((result) => {
+          this.profile = {}
+          this.form = {}
+          this.makeToast('Profile image updated', 'Success', 'success')
+          this.getProfileDataCompany(this.user.user_id)
+        })
+        .catch((error) => {
+          this.makeToast(error.data.msg, 'Error', 'danger')
+        })
     },
     onSave() {
       const payload = {
         id: this.profile[0].profile_id,
         form: this.formProfile
       }
-      this.patchProfileCompany(payload).then(result => {
+      this.patchProfileCompany(payload).then((result) => {
         this.profile = {}
         this.makeToast('Profile updated', 'Success', 'success')
         this.getProfileDataCompany(this.user.user_id)
@@ -367,8 +426,6 @@ export default {
     ...mapGetters({ profile: 'getProfileCompany', user: 'getUser' })
   },
   created() {
-    console.log(this.profile)
-    console.log(this.user)
     this.formProfile = {
       user_id: this.user.user_id,
       company_name: this.user.company_name,

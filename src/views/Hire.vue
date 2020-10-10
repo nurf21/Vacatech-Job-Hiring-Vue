@@ -1,34 +1,49 @@
 <template>
-  <div style="width:100%; background-color: #E5E5E5;">
-    <Header class="py-3" :img="profile[0].profile_img"/>
+  <div style="width: 100%; background-color: #e5e5e5">
+    <Header class="py-3" :img="profile[0].profile_img" />
     <div class="page-container">
       <div class="profile-info">
-        <div class="image"><b-img :src="url + '/' + talentData[0].profile[0].profile_img" class="image"></b-img></div>
-        <div style="padding:0 30px">
-          <h4>{{talentData[0].user_name}}</h4>
-          <p>{{talentData[0].profile[0].profile_job}}</p>
-          <p>{{talentData[0].profile[0].job_address}}</p>
-          <p style="color: #9EA0A5;">{{talentData[0].profile[0].profile_desc}}</p>
+        <div class="image">
+          <b-img
+            :src="url + '/' + talentData[0].profile[0].profile_img"
+            class="image"
+          ></b-img>
+        </div>
+        <div style="padding: 0 30px">
+          <h4>{{ talentData[0].user_name }}</h4>
+          <p>{{ talentData[0].profile[0].profile_job }}</p>
+          <p>{{ talentData[0].profile[0].job_address }}</p>
+          <p style="color: #9ea0a5">
+            {{ talentData[0].profile[0].profile_desc }}
+          </p>
           <h4>Skill</h4>
           <div class="skills">
-            <div class="skill" v-for="(value, index) in talentData[0].skill" :key="index">{{value.skill_name}}</div>
+            <div
+              class="skill"
+              v-for="(value, index) in talentData[0].skill"
+              :key="index"
+            >
+              {{ value.skill_name }}
+            </div>
           </div>
         </div>
       </div>
       <div class="hire-info">
-        <h2>Hubungi {{talentData[0].user_name}}</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.</p>
+        <h2>Hubungi {{ talentData[0].user_name }}</h2>
         <br />
         <div>
-          <b-form @submit.prevent="onSubmit()">
+          <b-alert show variant="success" v-show="isSuccess">
+            Pesan anda telah terkirim.
+          </b-alert>
+          <b-form @submit.prevent="onSubmit()" v-show="!isSuccess">
             <b-form-group
-              style="color: #9EA0A5;"
+              style="color: #9ea0a5"
               id="input-group-2"
               label="Pesan"
               label-for="textarea"
             >
               <b-form-textarea
-                style="color: #9EA0A5;"
+                style="color: #9ea0a5"
                 id="textarea"
                 v-model="form.msg"
                 placeholder="Masukkan pesan yang ingin anda kirimkan kepada talent"
@@ -36,7 +51,9 @@
                 max-rows="6"
               ></b-form-textarea>
             </b-form-group>
-            <b-button block class="mt-5 btn-hire" type="submit">Hire</b-button>
+            <b-button block class="mt-5 btn-hire" type="submit"
+              >Kirim Pesan</b-button
+            >
           </b-form>
         </div>
       </div>
@@ -53,7 +70,8 @@ export default {
   data() {
     return {
       url: process.env.VUE_APP_BASE_URL,
-      form: {}
+      form: {},
+      isSuccess: false
     }
   },
   components: {
@@ -63,7 +81,7 @@ export default {
   methods: {
     ...mapActions(['postRoomChat']),
     onSubmit() {
-      this.postRoomChat(this.form)
+      this.postRoomChat(this.form).then((response) => (this.isSuccess = true))
     }
   },
   computed: {
