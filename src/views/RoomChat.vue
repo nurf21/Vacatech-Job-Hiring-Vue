@@ -16,7 +16,7 @@
             </b-card-header>
             <b-card-body>
               <div v-show="!isChat">
-                <b-img :src="require('../assets/img/nochat.png')" />
+                <b-img :src="require('../assets/img/nochat.png')" center />
               </div>
               <b-row v-show="isChat" v-for="(value, index) in room" :key="index">
                 <b-col md="3" class="thumbnail">
@@ -204,7 +204,7 @@ export default {
 .content .room-chat .bubble-chat .purp {
   background: rgba(94, 80, 161, 0.8);
   padding: 1em;
-  border-radius: 30px 30px 30px 30px;
+  border-radius: 30px 30px 0px 30px;
   margin: 0.3em;
 }
 
@@ -231,5 +231,121 @@ export default {
   line-height: 22px;
   color: #1f2a36;
   margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .content {
+    padding: 4em 3em;
+  }
+
+  .content img.mx-auto.d-block {
+    max-height: 100px;
+  }
+
+  .content .card-body{
+    padding: 10px;
+  }
+
+  .content .chat-list .person h1 {
+    font-size: 14px;
+    margin-left: 10px;
+  }
+
+  .content .room-chat .card-header {
+    padding: 10px;
+  }
+
+  .content .room-chat .bubble-chat {
+    padding: 32px;
+  }
+
+  .content .room-chat .card-header p {
+    margin-left: 20px;
+  }
+
+  .content .room-chat .bubble-chat .purp p {
+    font-size: 14px;
+    line-height: 20px;
+    text-align: right;
+  }
+
+  .content .room-chat .bubble-chat .purp {
+    padding: 14px;
+  }
+
+  .content .room-chat .card-footer .send {
+    padding: 5px 10px;
+  }
+
+  .content .room-chat .card-footer .send img {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .content .chat-list {
+    margin-bottom: 18px;
+  }
+
+  .thumbnail.col-md-3, .card-header .col-md-1 {
+    width: 50px;
+    height: 50px;
+  }
+
+  .person.col-md-9, .card-header .col-md-11 {
+    width: 200px;
+  }
+
+  .card-header .col-md-11 {
+    padding: 0;
+  }
+
+  .card-body .row.bubble-chat {
+    padding: 22px;
+  }
+
+  .card-footer .col-md-11 {
+    padding-left: 0;
+    width: 259px;
+  }
+
+  .card-footer .col-md-1 {
+    width: 38px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .card-footer .col-md-11 {
+    padding-left: 0;
+    width: 209px;
+  }
+
+  .card-footer .col-md-1 {
+    width: 38px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .content {
+    padding: 2em;
+  }
+
+  .card-body .row.bubble-chat {
+    padding: 16px;
+  }
+
+  .person.col-md-9, .card-header .col-md-11 {
+    width: 194px;
+  }
+
+  .card-footer .col-md-11 {
+    padding-left: 0;
+    width: 186px;
+  }
+
+  .card-footer .col-md-1 {
+    width: 38px;
+  }
 }
 </style>
