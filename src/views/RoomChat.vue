@@ -1,10 +1,10 @@
 <template>
   <div class="p-container">
     <header v-if="user.user_role === 1">
-      <Navbar :img="talentData[0].profile[0].profile_img"/>
+      <Navbar :img="talentData[0].profile[0].profile_img" />
     </header>
     <header v-if="user.user_role === 2">
-      <Navbar :img="company[0].profile_img"/>
+      <Navbar :img="company[0].profile_img" />
     </header>
 
     <div class="content">
@@ -18,18 +18,28 @@
               <div v-show="!isChat">
                 <b-img :src="require('../assets/img/nochat.png')" />
               </div>
-              <b-row v-show="isChat" v-for="(value, index) in room" :key="index">
+              <b-row
+                v-show="isChat"
+                v-for="(value, index) in room"
+                :key="index"
+              >
                 <b-col md="3" class="thumbnail">
                   <b-img
                     v-bind="mainProps"
-                    :src="require('../assets/profile/louis.jpg')"
+                    :src="url + '/' + value.profile_img"
                     rounded="circle"
                     alt="Circle image"
-                  >></b-img>
+                    >></b-img
+                  >
                 </b-col>
-                <b-col md="9" align-self="center" class="person" @click="select(value)">
-                  <h1>Room: {{ value.roomchat_id }}</h1>
-                  <!-- <p>Permisi kak...</p> -->
+                <b-col
+                  md="9"
+                  align-self="center"
+                  class="person"
+                  @click="select(value)"
+                >
+                  <h1>{{ value.user_name }}</h1>
+                  <p>{{ value.msg.slice(0, 15) }}...</p>
                 </b-col>
               </b-row>
             </b-card-body>
@@ -42,30 +52,45 @@
                 <b-col md="1">
                   <b-img
                     v-bind="mainProps"
-                    :src="require('../assets/profile/louis.jpg')"
+                    :src="url + '/' + selectedRoom.profile_img"
                     rounded="circle"
                     alt="Circle image"
-                  >></b-img>
+                    >></b-img
+                  >
                 </b-col>
                 <b-col md="11" align-self="center">
-                  <p>{{selectedRoom}}</p>
+                  <p>{{ selectedRoom.user_name }}</p>
                 </b-col>
               </b-row>
             </b-card-header>
-            <b-card-body>
-              <b-row class="bubble-chat">
-                <b-col md="12" class="text-left purp" v-for="(value, index) in messages" :key="index">
-                  <p>{{value.user_id}}: {{value.msg}} ({{value.msg_created_at.split('T').join(', ').slice(0, 17)}})</p>
+            <b-card-body class="chat-content">
+              <b-row
+                class="bubble-chat"
+                v-for="(value, index) in messages"
+                :key="index"
+              >
+                <b-col md="9" class="text-left purp">
+                  <p>{{ value.user_name }}: {{ value.msg }}</p>
                 </b-col>
-                <!-- <b-col md="12" class="text-right or">
-                  <p>chat goes here</p>
-                </b-col> -->
+                <b-col md="2" align-self="center">
+                  <span class="chat-date">
+                    {{
+                      value.msg_created_at.split('T').join(', ').slice(0, 17)
+                    }}
+                  </span>
+                </b-col>
               </b-row>
             </b-card-body>
-            <b-card-footer footer-bg-variant="white" footer-border-variant="white">
+            <b-card-footer
+              footer-bg-variant="white"
+              footer-border-variant="white"
+            >
               <b-row>
                 <b-col md="11">
-                  <b-form-input v-model="textToSend" placeholder="Type a message"></b-form-input>
+                  <b-form-input
+                    v-model="textToSend"
+                    placeholder="Type a message"
+                  ></b-form-input>
                 </b-col>
                 <b-col md="1" class="send text-center" @click="send()">
                   <b-img :src="require('../assets/icon/send.png')" />
@@ -103,44 +128,55 @@ export default {
       },
       isChat: false,
       isSelect: false,
-      selectedRoom: null,
-      textToSend: null
+      selectedRoom: {},
+      textToSend: null,
+      url: process.env.VUE_APP_BASE_URL
     }
   },
   methods: {
     ...mapActions(['getRoomChatById', 'getMessageChatByRoom', 'sendMessage']),
     select(data) {
       this.isSelect = true
-      this.selectedRoom = data.roomchat_id
-      this.getMessageChatByRoom(this.selectedRoom).then(result => {
-        console.log(this.messages)
-      })
+      this.selectedRoom = data
+      this.getMessageChatByRoom(this.selectedRoom.roomchat_id)
     },
     send() {
       this.form = {
-        roomchat_id: this.selectedRoom,
+        roomchat_id: this.selectedRoom.roomchat_id,
         user_id: this.user.user_id,
-        receiver_id: this.messages.filter(value => value.user_id !== this.user.user_id)[0].user_id,
+        receiver_id: this.messages.filter(
+          (value) => value.user_id !== this.user.user_id
+        )[0].user_id,
         msg: this.textToSend
       }
-      this.sendMessage(this.form).then(result => {
-        this.getMessageChatByRoom(this.selectedRoom)
-        this.textToSend = null
-      }).catch(error => console.log(error))
+      console.log(this.form)
+      this.sendMessage(this.form)
+        .then((result) => {
+          this.getMessageChatByRoom(this.selectedRoom.roomchat_id)
+          this.textToSend = null
+        })
+        .catch((error) => console.log(error))
     }
   },
   computed: {
-    ...mapGetters({ user: 'getUser', talentData: 'getTalentData', company: 'getProfileCompany', room: 'getRoom', messages: 'getMessages' })
+    ...mapGetters({
+      user: 'getUser',
+      talentData: 'getTalentData',
+      company: 'getProfileCompany',
+      room: 'getRoom',
+      messages: 'getMessages'
+    })
   },
   created() {
     this.isSelect = false
-    this.getRoomChatById(this.user.user_id).then(result => {
-      console.log(this.room)
-      this.isChat = true
-    }).catch(error => {
-      this.isChat = false
-      console.log(error)
-    })
+    this.getRoomChatById(this.user.user_id)
+      .then((result) => {
+        this.isChat = true
+      })
+      .catch((error) => {
+        this.isChat = false
+        console.log(error)
+      })
   }
 }
 </script>
@@ -164,6 +200,20 @@ export default {
   padding: 0.5em;
   border-radius: 10px;
   cursor: pointer;
+}
+
+.chat-list .card-body {
+  min-height: 400px;
+  max-height: 500px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.chat-content {
+  min-height: 318px;
+  max-height: 319px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .content .chat-list p {
@@ -211,10 +261,14 @@ export default {
 .content .room-chat .bubble-chat .purp p {
   font-style: normal;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 22px;
   color: white;
   margin: 0;
+}
+
+.chat-date {
+  font-size: 14px;
 }
 
 .content .room-chat .bubble-chat .or {

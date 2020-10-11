@@ -50,9 +50,6 @@ export default {
         this.$router.push('/update/talent')
       }
     })
-    // if (!this.talentData[0].profile[0].job_type) {
-    //   this.$router.push('/update/talent')
-    // }
   }
 }
 </script>
