@@ -11,11 +11,13 @@
     <b-navbar-nav class="ml-auto nav-item">
       <b-nav-item>
         <b-row class="iconic">
-          <b-col>
+          <b-col style="padding: 0">
             <b-img
               :src="require('../../assets/icon/bell.png')"
               id="popover-target-1"
+              @click="seen()"
             ></b-img>
+
             <b-popover
               target="popover-target-1"
               triggers="hover"
@@ -23,15 +25,27 @@
             >
               <b-img
                 :src="require('../../assets/img/notif0.png')"
-                v-show="!isNotif"
+                v-if="notif.notification.length < 1"
               ></b-img>
-              <!-- <div class="notification" v-for="(value, index) in notif" :key="index">
+              <div
+                class="notification"
+                v-else
+                v-for="(value, index) in notif.notification"
+                :key="index"
+              >
                 <p>
-                  {{ value.notif }} (
-                  <span>{{value.notif_created_at.split('T').join(', ').slice(0, 17)}}</span>)
+                  {{ value.message }}
+                  (<span>
+                    {{
+                      value.created_at.split('T').join(', ').slice(0, 17)
+                    }} </span
+                  >)
                 </p>
-              </div> -->
+              </div>
             </b-popover>
+          </b-col>
+          <b-col class="red-dot" v-if="notif.unseen > 0">
+            <span class="dot"></span>
           </b-col>
           <b-col>
             <router-link to="/roomchat">
@@ -92,6 +106,21 @@
   cursor: pointer;
 }
 
+.dot {
+  height: 10px;
+  width: 10px;
+  background-color: red;
+  border-radius: 50%;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+}
+
+.red-dot {
+  padding-left: 0;
+  position: relative;
+}
+
 @media screen and (max-width: 768px) {
   .nav-container .iconic {
     display: flex;
@@ -122,7 +151,11 @@ export default {
     }
   },
   methods: {
-    ...mapActions({ handleLogout: 'logout', handleNotif: 'getNotification' }),
+    ...mapActions({
+      handleLogout: 'logout',
+      handleNotif: 'getNotification',
+      handleSeen: 'clickNotification'
+    }),
     confirmLogout() {
       this.$bvModal
         .msgBoxConfirm('Are you sure want to logout?', {
@@ -138,6 +171,9 @@ export default {
             this.handleLogout()
           }
         })
+    },
+    seen() {
+      this.handleSeen(this.user.user_id)
     }
   },
   computed: {
@@ -145,13 +181,6 @@ export default {
   },
   created() {
     this.handleNotif(this.user.user_id)
-      .then((result) => {
-        this.isNotif = true
-      })
-      .catch((error) => {
-        this.isNotif = false
-        console.log(error)
-      })
   }
 }
 </script>

@@ -43,6 +43,18 @@ export default {
           })
       })
     },
+    clickNotification(context, payload) {
+      return new Promise((resolve, reject) => {
+        axios
+          .patch(`${process.env.VUE_APP_BASE_URL}/roomchat/chat/notif/${payload}`)
+          .then(response => {
+            resolve(response.data)
+          })
+          .catch(error => {
+            reject(error.response)
+          })
+      })
+    },
     getRoomChatById(context, payload) {
       return new Promise((resolve, reject) => {
         axios
