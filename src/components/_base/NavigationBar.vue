@@ -11,17 +11,41 @@
     <b-navbar-nav class="ml-auto nav-item">
       <b-nav-item>
         <b-row class="iconic">
-          <b-col>
-            <b-img :src="require('../../assets/icon/bell.png')" id="popover-target-1"></b-img>
-            <b-popover target="popover-target-1" triggers="hover" placement="bottom">
-              <b-img :src="require('../../assets/img/notif0.png')" v-show="!isNotif"></b-img>
-              <div class="notification" v-for="(value, index) in notif" :key="index">
+          <b-col style="padding: 0">
+            <b-img
+              :src="require('../../assets/icon/bell.png')"
+              id="popover-target-1"
+              @click="seen()"
+            ></b-img>
+
+            <b-popover
+              target="popover-target-1"
+              triggers="hover"
+              placement="bottom"
+            >
+              <b-img
+                :src="require('../../assets/img/notif0.png')"
+                v-if="notif.notification.length < 1"
+              ></b-img>
+              <div
+                class="notification"
+                v-else
+                v-for="(value, index) in notif.notification"
+                :key="index"
+              >
                 <p>
-                  {{ value.notif }} (
-                  <span>{{value.notif_created_at.split('T').join(', ').slice(0, 17)}}</span>)
+                  {{ value.message }}
+                  (<span>
+                    {{
+                      value.created_at.split('T').join(', ').slice(0, 17)
+                    }} </span
+                  >)
                 </p>
               </div>
             </b-popover>
+          </b-col>
+          <b-col class="red-dot" v-if="notif.unseen > 0">
+            <span class="dot"></span>
           </b-col>
           <b-col>
             <router-link to="/roomchat">
@@ -35,9 +59,14 @@
               rounded="circle"
               alt="Circle image"
               id="popover-target-2"
-            >></b-img>
-            <b-popover target="popover-target-2" triggers="hover" placement="bottom">
-              <template v-slot:title>Halo, {{user.user_name}}</template>
+              >></b-img
+            >
+            <b-popover
+              target="popover-target-2"
+              triggers="hover"
+              placement="bottom"
+            >
+              <template v-slot:title>Halo, {{ user.user_name }}</template>
               <b-navbar variant="faded" type="light">
                 <router-link to="/profile" v-if="user.user_role === 1">
                   <b-navbar-brand>Profile</b-navbar-brand>
@@ -47,7 +76,9 @@
                 </router-link>
               </b-navbar>
               <b-navbar variant="faded" type="light">
-                <b-navbar-brand @click="confirmLogout" class="logout">Logout</b-navbar-brand>
+                <b-navbar-brand @click="confirmLogout" class="logout"
+                  >Logout</b-navbar-brand
+                >
               </b-navbar>
             </b-popover>
           </b-col>
@@ -73,6 +104,21 @@
 
 .logout {
   cursor: pointer;
+}
+
+.dot {
+  height: 10px;
+  width: 10px;
+  background-color: red;
+  border-radius: 50%;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+}
+
+.red-dot {
+  padding-left: 0;
+  position: relative;
 }
 
 @media screen and (max-width: 768px) {
@@ -105,7 +151,11 @@ export default {
     }
   },
   methods: {
-    ...mapActions({ handleLogout: 'logout', handleNotif: 'getNotification' }),
+    ...mapActions({
+      handleLogout: 'logout',
+      handleNotif: 'getNotification',
+      handleSeen: 'clickNotification'
+    }),
     confirmLogout() {
       this.$bvModal
         .msgBoxConfirm('Are you sure want to logout?', {
@@ -115,12 +165,15 @@ export default {
           footerClass: 'p-2 border-top-0',
           centered: true
         })
-        .then(value => {
+        .then((value) => {
           this.isLogout = value
           if (this.isLogout) {
             this.handleLogout()
           }
         })
+    },
+    seen() {
+      this.handleSeen(this.user.user_id)
     }
   },
   computed: {
@@ -128,13 +181,6 @@ export default {
   },
   created() {
     this.handleNotif(this.user.user_id)
-      .then(result => {
-        this.isNotif = true
-      })
-      .catch(error => {
-        this.isNotif = false
-        console.log(error)
-      })
   }
 }
 </script>
