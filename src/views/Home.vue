@@ -217,7 +217,6 @@ export default {
   border-radius: 4px;
   width: 120px;
   height: 40px;
-  position: absolute;
   top: 100px;
   right: 40px;
 }
@@ -263,5 +262,46 @@ export default {
   padding: 3px 15px;
   color: white;
   margin: 0 5px 5px 0px;
+}
+
+@media screen and (max-width: 500px) {
+  .search-name {
+    width: 100px;
+  }
+  .form-sort {
+    width: 100px;
+  }
+
+  .profile-img {
+    width: 75px;
+    height: 75px;
+    margin: 10px;
+  }
+
+  .profile-details {
+    margin: 0 10px;
+  }
+
+  .workers {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 50px;
+  }
+
+  .btn-profile {
+    margin-left: 104px;
+  }
+
+  .skills {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .btn-profile {
+    position: absolute;
+  }
 }
 </style>
