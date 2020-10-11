@@ -28,7 +28,7 @@
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 500px) {
   .login-container .content-left {
     display: none;
   }
